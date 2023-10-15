@@ -5,6 +5,8 @@ import {
   faBox,
   faFileLines,
   faGear,
+  faUsers,
+  faPersonCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 
 const adminItems = [
@@ -27,10 +29,22 @@ const adminItems = [
     icon: faBox,
   },
   {
-    name: "payments",
-    to: "/payments",
-    matchUrl: "payments",
+    name: "Bookings",
+    to: "/allBooking",
+    matchUrl: "/dashboard/allBooking",
     icon: faFileLines,
+  },
+  {
+    name: "Manage Faqs",
+    to: "/faqs",
+    matchUrl: "/dashboard/faqs",
+    icon: faPersonCircleQuestion,
+  },
+  {
+    name: "Manage Users",
+    to: "/manageAllUser",
+    matchUrl: "/dashboard/manageAllUser",
+    icon: faUsers,
   },
   {
     name: "profile settings",

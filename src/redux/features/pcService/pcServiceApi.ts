@@ -1,4 +1,5 @@
 import { apiSlice } from "../apiSlice/apiSlice";
+import { tagTypes } from "../apiSlice/tagTypesList";
 export const pcServiceApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getPcService: builder.query({
@@ -7,6 +8,7 @@ export const pcServiceApi = apiSlice.injectEndpoints({
           url: `/pcService?${query}`,
         };
       },
+      providesTags: [tagTypes.pcService],
     }),
     getPcServiceById: builder.query({
       query: (id) => `/pcService/${id}`,
@@ -19,11 +21,12 @@ export const pcServiceApi = apiSlice.injectEndpoints({
           body: info,
         };
       },
+      invalidatesTags: [tagTypes.pcService],
     }),
     editPcService: builder.mutation({
       query: (info) => {
         return {
-          url: `/pcService/${info._id}`,
+          url: `/pcService/${info.id}`,
           method: "PATCH",
           body: info,
         };
@@ -36,6 +39,7 @@ export const pcServiceApi = apiSlice.injectEndpoints({
           method: "DELETE",
         };
       },
+      invalidatesTags: [tagTypes.pcService],
     }),
   }),
 });

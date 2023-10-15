@@ -7,6 +7,7 @@ type TextAreaProps = {
   rows?: number;
   value?: string;
   placeholder?: string;
+  required?: boolean;
 };
 
 const FormTextArea = ({
@@ -14,6 +15,7 @@ const FormTextArea = ({
   label,
   rows,
   value,
+  required,
   placeholder,
 }: TextAreaProps) => {
   const { control } = useFormContext();
@@ -22,6 +24,7 @@ const FormTextArea = ({
       {label ? label : null}
       <Controller
         name={name}
+        rules={{ required: required }}
         control={control}
         render={({ field }) => (
           <Input.TextArea

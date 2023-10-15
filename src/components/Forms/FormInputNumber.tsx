@@ -1,10 +1,11 @@
+"use client";
+
 import { getErrorMessageByPropertyName } from "@/utils/schema-validator";
-import { Input } from "antd";
+import { InputNumber } from "antd";
 import { spawn } from "child_process";
 import { useFormContext, Controller } from "react-hook-form";
 interface IInput {
   name: string;
-  type?: string;
   size?: "large" | "small";
   value?: string | string[] | undefined;
   id?: string;
@@ -14,9 +15,8 @@ interface IInput {
   required?: boolean;
 }
 
-const FormInput = ({
+const FormInputNumber = ({
   name,
-  type,
   size = "large",
   value,
   id,
@@ -39,29 +39,20 @@ const FormInput = ({
         control={control}
         name={name}
         rules={{ required: required }}
-        render={({ field }) =>
-          type === "password" ? (
-            <Input.Password
-              type={type}
-              size={size}
-              placeholder={placeholder}
-              {...field}
-              value={value ? value : field.value}
-            />
-          ) : (
-            <Input
-              type={type}
-              size={size}
-              placeholder={placeholder}
-              {...field}
-              value={value ? value : field.value}
-            />
-          )
-        }
+        render={({ field }) => (
+          <InputNumber
+            className="w-full"
+            type={"number"}
+            size={size}
+            placeholder={placeholder}
+            {...field}
+            value={value ? value : field.value}
+          />
+        )}
       />
       <small style={{ color: "red" }}>{errorMessage}</small>
     </>
   );
 };
 
-export default FormInput;
+export default FormInputNumber;

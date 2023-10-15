@@ -1,42 +1,44 @@
 import AdminLayout from "@/layout/AdminLayout";
 import DashboardLayout from "@/layout/DashboardLayout";
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Space, message } from "antd";
-import { useGetPcServiceQuery } from "@/redux/features/pcService/pcServiceApi";
-import Form from "@/components/Forms/Form";
-import FormInput from "@/components/Forms/FormInput";
+import {
+  useAddPcServiceMutation,
+  useGetPcServiceQuery,
+} from "@/redux/features/pcService/pcServiceApi";
+import { toast } from "react-toastify";
+import AddServiceForm from "@/components/Forms/AddServiceForm";
 
 type Props = {};
 
 const AddService = (props: Props) => {
-  const { data } = useGetPcServiceQuery("limit=3");
-  console.log(data);
+  const [addService, { isLoading, isError, isSuccess, error }] =
+    useAddPcServiceMutation();
+
   const onSubmit = async (data: any) => {
-    message.loading("Creating.....");
-    try {
-      console.log(data);
-      //   await addDepartment(data);
-      message.success("Department added successfully");
-    } catch (err: any) {
-      console.error(err.message);
-      message.error(err.message);
-    }
+    addService(data);
   };
+
+  useEffect(() => {
+    if (isError && error) {
+      toast.error("Failed to create");
+    }
+  }, [isError, isLoading, isSuccess]);
+
   return (
-    <DashboardLayout>
+    <>
       <AdminLayout>
-        <div>it admin layout</div>
-        <Button>fdfd {data?.data?.length}</Button>
         <div>
           <h2 className="text-center text-xl font-bold">Add a Service </h2>
           <div className="mt-5">
-            <Form submitHandler={onSubmit}>
-              <FormInput name="s" />
-            </Form>
+            <AddServiceForm
+              isLoading={isLoading}
+              onSubmit={onSubmit}
+            ></AddServiceForm>
           </div>
         </div>
       </AdminLayout>
-    </DashboardLayout>
+    </>
   );
 };
 
