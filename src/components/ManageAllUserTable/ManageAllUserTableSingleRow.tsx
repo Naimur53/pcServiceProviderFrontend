@@ -1,5 +1,9 @@
-import { useEditUserMutation } from "@/redux/features/user/userApi";
+import {
+  useDeleteUserMutation,
+  useEditUserMutation,
+} from "@/redux/features/user/userApi";
 import { IUser } from "@/types/common";
+import { Popconfirm } from "antd";
 import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 type Props = {} & IUser;
@@ -17,6 +21,7 @@ const ManageAllUserTableSingleRow = ({
 }: Props) => {
   const [editUser, { isLoading, isError, isSuccess, error }] =
     useEditUserMutation();
+  const [deleteUser, { isLoading: isDeleteLoading }] = useDeleteUserMutation();
   useEffect(() => {
     if (isSuccess) {
       toast.success("success");
@@ -24,7 +29,10 @@ const ManageAllUserTableSingleRow = ({
       toast.error("something went wrong");
     }
   }, [isError, isSuccess]);
-  console.log(error);
+  const handleDelete = () => {
+    deleteUser(id);
+    console.log();
+  };
   return (
     <tr className="focus:outline-none text-center h-16 border border-gray-300 mt-2 rounded">
       <td className="pl-2">
@@ -38,7 +46,7 @@ const ManageAllUserTableSingleRow = ({
       <td>
         {isBlocked ? (
           <button
-            disabled={isLoading}
+            disabled={isLoading || isDeleteLoading}
             onClick={() => {
               editUser({ id, isBlocked: false });
             }}
@@ -48,7 +56,7 @@ const ManageAllUserTableSingleRow = ({
           </button>
         ) : (
           <button
-            disabled={isLoading}
+            disabled={isLoading || isDeleteLoading}
             onClick={() => {
               editUser({ id, isBlocked: true });
             }}
@@ -57,6 +65,23 @@ const ManageAllUserTableSingleRow = ({
             Block
           </button>
         )}
+        <Popconfirm
+          title="Are you sure to delete user?"
+          onConfirm={handleDelete}
+          placement="leftTop"
+          description="you will lost all review, booking, feedback of this user"
+          okButtonProps={{
+            className: "!border !border-blue-300 text-blue-500",
+          }}
+        >
+          <button
+            disabled={isLoading || isDeleteLoading}
+            // onClick={}
+            className="border border-red-300 px-3 leading-0 rounded-md  bg-red-500 transition-all text-white py-2 ml-2"
+          >
+            Delete
+          </button>
+        </Popconfirm>
       </td>
     </tr>
   );

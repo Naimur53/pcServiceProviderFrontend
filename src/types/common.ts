@@ -1,3 +1,6 @@
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
+
 export interface IMeta {
   limit: number;
   page: number;
@@ -139,4 +142,28 @@ export interface Cart {
   updatedAt: Date;
   user?: IUser;
   pcService: PcService;
+}
+
+export interface IBlog {
+  id: string;
+  title: string;
+  thumbnails: string;
+  createdAt: Date;
+  updatedAt: Date;
+  content: string;
+}
+
+export interface IFeedback {
+  id: string;
+  title: string;
+  comment: string;
+  userId: string;
+  user?: IUser;
+  createAt: string;
+}
+export interface INavItems {
+  to: string;
+  matchUrl: string;
+  name: string;
+  icon: IconDefinition;
 }

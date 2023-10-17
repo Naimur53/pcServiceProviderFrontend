@@ -1,13 +1,17 @@
 import { IFaq } from "@/types/common";
-import { Input } from "antd";
+import { Input, Popconfirm } from "antd";
 import { toast } from "react-toastify";
 import React, { useState } from "react";
-import { useEditFaqMutation } from "@/redux/features/faq/faqApi";
+import {
+  useDeleteFaqMutation,
+  useEditFaqMutation,
+} from "@/redux/features/faq/faqApi";
 
 type Props = {} & IFaq;
 
 function FaqsTableSingleRow({ answer, createAt, id, question }: Props) {
   const [submitEditedFaq, { isLoading }] = useEditFaqMutation();
+  const [deleteFaq, { isLoading: isDeleteLoading }] = useDeleteFaqMutation();
   const [isEditing, setIsEditing] = useState(false);
   const [editedFaq, setEditedFaq] = useState({
     question,
@@ -23,6 +27,11 @@ function FaqsTableSingleRow({ answer, createAt, id, question }: Props) {
       return;
     }
     submitEditedFaq({ ...editedFaq, id });
+  };
+  const handleDelete = () => {
+    deleteFaq(id).catch((err) => {
+      toast.error("Failed to delete");
+    });
   };
   return (
     <>
@@ -61,7 +70,7 @@ function FaqsTableSingleRow({ answer, createAt, id, question }: Props) {
           {isEditing ? (
             <div className="flex gap-2 justify-center">
               <button
-                disabled={isLoading}
+                disabled={isDeleteLoading || isLoading}
                 onClick={() => {
                   handleSave();
                 }}
@@ -77,12 +86,30 @@ function FaqsTableSingleRow({ answer, createAt, id, question }: Props) {
               </button>
             </div>
           ) : (
-            <button
-              onClick={() => setIsEditing(true)}
-              className="mr-2 text-blue-500"
-            >
-              Edit
-            </button>
+            <>
+              <button
+                onClick={() => setIsEditing(true)}
+                disabled={isDeleteLoading || isLoading}
+                className="mr-2 text-blue-500"
+              >
+                Edit
+              </button>
+              <Popconfirm
+                title="Are your Sure to delete this faq?"
+                placement="leftTop"
+                onConfirm={handleDelete}
+                okButtonProps={{
+                  className: "!border !border-blue-300 text-blue-500",
+                }}
+              >
+                <button
+                  disabled={isDeleteLoading}
+                  className="border border-red-300 px-3 leading-0 rounded-md  bg-red-500 transition-all text-white py-2 ml-2"
+                >
+                  Delete
+                </button>
+              </Popconfirm>
+            </>
           )}
         </td>
       </tr>

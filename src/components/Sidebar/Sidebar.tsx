@@ -1,10 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import Logo from "../../images/logo/main-logo.png";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  FontAwesomeIcon,
+  FontAwesomeIconProps,
+} from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { dashboardSidebarItem } from "@/constants/dashboardSidebarItem";
+import { useAppSelector } from "@/redux/hook";
+import { INavItems, UserRole } from "@/types/common";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -14,13 +19,34 @@ interface SidebarProps {
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const location = useRouter();
   const { pathname } = location;
+  const user = useAppSelector((state) => state.user.user);
 
   const trigger = useRef<any>(null);
   const sidebar = useRef<any>(null);
 
   const [sidebarExpanded, setSidebarExpanded] = useState();
 
-  const items = dashboardSidebarItem.adminItems;
+  let items: INavItems[] = [];
+
+  switch (user?.role) {
+    case UserRole.Admin:
+      items = dashboardSidebarItem.adminItems;
+
+      break;
+    case UserRole.SuperAdmin:
+      items = dashboardSidebarItem.superAdminItems;
+
+      break;
+    case UserRole.Customer:
+      items = dashboardSidebarItem.userItems;
+
+      break;
+
+    default:
+      items = [];
+      break;
+  }
+
   return (
     <aside
       ref={sidebar}

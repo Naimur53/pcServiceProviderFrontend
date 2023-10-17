@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import Table from "../BookingTable/BookingTableTable";
-import { Button } from "antd";
+import { Button, Pagination } from "antd";
 import TableSingleRow from "../BookingTable/BookingTableTableSingleRow";
 import {
   useGetBookingByIdQuery,
@@ -16,6 +16,7 @@ import Form from "../Forms/Form";
 type Props = {};
 
 const AllBookingTable = (props: Props) => {
+  const [page, setPage] = useState<number>(1);
   const defaultValue = {
     value: "",
     label: "",
@@ -23,21 +24,23 @@ const AllBookingTable = (props: Props) => {
   const [activeStatus, setActiveStatus] = useState<SelectOptions>(defaultValue);
 
   const [sort, setSort] = useState<SelectOptions>(defaultValue);
+
   const queryString = useMemo(() => {
     const info = {
       status: activeStatus.value.length ? activeStatus.value : undefined,
-
+      page,
       sort: sort.value.length ? sort.value : undefined,
     };
     const queryString = Object.keys(info).reduce((pre, key: string) => {
-      const value: string | undefined = info[key as keyof typeof info];
+      const value: string | undefined | number = info[key as keyof typeof info];
       if (value) {
         return pre + `${Boolean(pre.length) ? "&" : ""}${key}=${value}`;
       }
       return pre;
     }, "");
     return queryString;
-  }, [activeStatus, sort]);
+  }, [activeStatus, sort, page]);
+
   console.log({ queryString });
 
   const { data, isFetching, isError, isLoading, isSuccess } =
@@ -51,11 +54,23 @@ const AllBookingTable = (props: Props) => {
   } else if (data.data.length) {
     const info = data.data as Booking[];
     content = (
-      <Table>
-        {info.map((single) => (
-          <TableSingleRow key={single.id} {...single}></TableSingleRow>
-        ))}
-      </Table>
+      <div>
+        <Table>
+          {info.map((single) => (
+            <TableSingleRow key={single.id} {...single}></TableSingleRow>
+          ))}
+        </Table>
+        <div className="flex justify-center mt-5">
+          <Pagination
+            pageSize={data.meta.limit}
+            total={data.data.length < data.meta.limit ? 1 : data.meta.total}
+            current={data.meta.page}
+            onChange={(value) => {
+              setPage(value);
+            }}
+          ></Pagination>
+        </div>
+      </div>
     );
   } else {
     content = <ErrorCompo error="No Booking Found!"></ErrorCompo>;

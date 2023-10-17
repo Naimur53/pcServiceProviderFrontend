@@ -2,6 +2,7 @@ export enum tagTypes {
   pcService = "pcService",
   booking = "booking",
   review = "review",
+  feedback = "feedback",
   cart = "cart",
   user = "user",
   faq = "faq",

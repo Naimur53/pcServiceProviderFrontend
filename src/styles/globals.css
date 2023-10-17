@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+    .dashboard-title{
+        @apply text-xl font-bold text-center
+    }
+    td > img{
+        @apply max-w-[100px]
+    }
+}

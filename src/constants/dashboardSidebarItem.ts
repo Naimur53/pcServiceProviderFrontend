@@ -1,3 +1,4 @@
+import { INavItems } from "@/types/common";
 import {
   faCoffee,
   faBorderAll,
@@ -7,15 +8,31 @@ import {
   faGear,
   faUsers,
   faPersonCircleQuestion,
+  faEnvelopeOpenText,
+  faPenToSquare,
+  faUserGear,
+  faUsersGear,
+  faUserPen,
+  faCartShopping,
+  faCommentMedical,
+  faComment,
 } from "@fortawesome/free-solid-svg-icons";
-
-const adminItems = [
+const common: INavItems[] = [
   {
     name: "Overview",
     to: "",
     matchUrl: "/dashboard",
     icon: faBorderAll,
   },
+  {
+    name: "profile settings",
+    to: "/profileSetting",
+    matchUrl: "/dashboard/profileSetting",
+    icon: faGear,
+  },
+];
+const adminItems: INavItems[] = [
+  common[0],
   {
     name: "All Services",
     to: "/allService",
@@ -47,13 +64,59 @@ const adminItems = [
     icon: faUsers,
   },
   {
-    name: "profile settings",
-    to: "/profileSettings",
-    matchUrl: "profileSettings",
-    icon: faGear,
+    name: "All Blogs",
+    to: "/allBlog",
+    matchUrl: "/dashboard/allBlog",
+    icon: faEnvelopeOpenText,
   },
+  {
+    name: "Add Blog",
+    to: "/addBlog",
+    matchUrl: "/dashboard/addBlog",
+    icon: faPenToSquare,
+  },
+  {
+    name: "All FeedBack",
+    to: "/allFeedback",
+    matchUrl: "/dashboard/allFeedback",
+    icon: faComment,
+  },
+  common[1],
 ];
-
+const superAdminItems: INavItems[] = [
+  common[0],
+  {
+    name: "Manage Admin",
+    to: "/manageAdmin",
+    matchUrl: "/dashboard/manageAdmin",
+    icon: faUsersGear,
+  },
+  {
+    name: "Add Admin",
+    to: "/addAdmin",
+    matchUrl: "/dashboard/addAdmin",
+    icon: faUserPen,
+  },
+  common[1],
+];
+const userItems = [
+  common[0],
+  {
+    name: "My carts",
+    to: "/myCarts",
+    matchUrl: "/dashboard/myCarts",
+    icon: faCartShopping,
+  },
+  {
+    name: "Give FeedBack",
+    to: "/addFeedBack",
+    matchUrl: "/dashboard/addFeedBack",
+    icon: faCommentMedical,
+  },
+  common[1],
+];
 export const dashboardSidebarItem = {
   adminItems,
+  superAdminItems,
+  userItems,
 };
