@@ -27,6 +27,15 @@ module.exports = {
           black: "#000",
         },
       },
+      container: {
+        center: true,
+        padding: {
+          sm: "20px",
+          md: "40px",
+          xl: "100px",
+          DEFAULT: "20px",
+        },
+      },
     },
   },
   plugins: [],

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import Logo from "../../images/logo/main-logo.png";
 
 import {
   FontAwesomeIcon,
@@ -10,6 +9,8 @@ import { useRouter } from "next/router";
 import { dashboardSidebarItem } from "@/constants/dashboardSidebarItem";
 import { useAppSelector } from "@/redux/hook";
 import { INavItems, UserRole } from "@/types/common";
+import Image from "next/image";
+import Logo from "../Logo/Logo";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -56,7 +57,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
     >
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="flex items-center justify-between gap-2 ">
-        <Link href="/">{/* <img src={Logo} alt="Logo" />///// */}</Link>
+        <Logo></Logo>
 
         <button
           ref={trigger}

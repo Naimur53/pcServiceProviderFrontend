@@ -45,6 +45,8 @@ const FormSelectField = ({
           <Select
             onChange={handleChange ? handleChange : onChange}
             size={size}
+            popupClassName="capitalize"
+            className="capitalize"
             options={options}
             value={value ? value : renderValue}
             style={{ width: "100%" }}
