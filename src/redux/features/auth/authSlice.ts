@@ -25,13 +25,16 @@ const initialState: IState = {
 export const createUser = createAsyncThunk(
   "user/createUser",
   async (info: Omit<IUser, "id" | "role" | "profileImg">) => {
-    const res = await fetch("http://localhost:5000/api/v1/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(info),
-    });
+    const res = await fetch(
+      "https://pc-service-provider-backend.vercel.app/api/v1/auth/signup",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(info),
+      }
+    );
     const data = await res.json();
     if (data.success) {
       console.log({ data });
@@ -45,13 +48,16 @@ export const createUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
   "user/loginUser",
   async (info: ICredential) => {
-    const res = await fetch("http://localhost:5000/api/v1/auth/signIn", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(info),
-    });
+    const res = await fetch(
+      "https://pc-service-provider-backend.vercel.app/api/v1/auth/signIn",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(info),
+      }
+    );
     const data = await res.json();
     if (data.success) {
       return data.data;
@@ -63,13 +69,16 @@ export const loginUser = createAsyncThunk(
 export const loginUserWithToken = createAsyncThunk(
   "user/loginUserWithToken",
   async () => {
-    const res = await fetch("http://localhost:5000/api/v1/profile", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: getFromLocalStorage(authKey) || "",
-      },
-    });
+    const res = await fetch(
+      "https://pc-service-provider-backend.vercel.app/api/v1/profile",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: getFromLocalStorage(authKey) || "",
+        },
+      }
+    );
     const data = await res.json();
     if (data.success) {
       return data.data;

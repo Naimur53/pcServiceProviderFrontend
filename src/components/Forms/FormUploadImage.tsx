@@ -47,7 +47,7 @@ const FormUploadImage: React.FC<props> = ({
         listType="picture-card"
         className="avatar-uploader"
         showUploadList={false}
-        action="http://localhost:5000/api/v1/uploadImg"
+        action="https://pc-service-provider-backend.vercel.app/api/v1/uploadImg"
         beforeUpload={beforeUpload}
         onChange={handleChange}
       >

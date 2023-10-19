@@ -1,7 +1,4 @@
-import DropdownMessage from "./DropdownMessage";
 import DropdownUser from "./DropdownUser";
-import DarkModeSwitcher from "./DarkModeSwitcher";
-import DropdownNotification from "./DropdownNotification";
 import "./Header";
 import Link from "next/link";
 import Logo from "../Logo/Logo";

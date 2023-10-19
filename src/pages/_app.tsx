@@ -6,9 +6,13 @@ import type { AppProps } from "next/app";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RootLayout from "@/layout/RootLayout";
+import Head from "next/head";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
+      <Head>
+        <title>Easy PC</title>
+      </Head>
       <Provider store={store}>
         <RootLayout>
           <Component {...pageProps} />
