@@ -1,43 +1,38 @@
-    # PcServiceProviderFrontend Project
+ # PcServiceProviderFrontend Project
+ This is a PC service provider site where users can take service to solve their PC problems.
 
-    This is a brief description of your project.
+## Features and Functionalities
 
-    ## Getting Started
+- **User Roles:**
+  - *Customer*: Regular users who can browse services, add them to their cart, and book services.
+  - *Admin*: Administrators responsible for managing service orders, user accounts, blog content, FAQs, and feedback.
+  - *Super-Admin*: Administrators with elevated privileges who can perform all admin functions and manage other admin accounts.
 
-    These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+- **Customer Features:**
+  - Browse available services.
+  - Add services to the cart for booking.
+  - Book services with an option for order confirmation by admins.
+  - Leave reviews for services.
+  - Update the status of bookings if they're not yet completed.
+  - Access location services.
+  - View booking history and cart from a personalized dashboard.
+  - Update user profiles through profile settings.
 
-    ### Prerequisites
+- **Admin Features:**
+  - View and manage all service orders.
+  - Change the status of orders.
+  - Add messages to orders for communication with customers.
+  - Reschedule orders as needed.
+  - Manage user accounts (block or delete).
+  - Create, update, and delete blog content.
+  - Manage FAQs (add, remove, and update).
+  - Handle feedback provided by users.
+  - Create and manage PC services (add, update, delete).
 
-    What things you need to install and how to install them:
+- **Super-Admin Features:**
+  - All functionalities available to admins.
+  - Ability to create and remove admin accounts.
 
-    - Node.js (version 14 or higher)
-    - npm (version 7 or higher)
 
-    ### Installing
 
-    A step-by-step series of examples that tell you how to get a development environment running.
-
-    1. Clone this repository to your local machine:
-
-       ```bash
-       git clone https://github.com/your-username/your-project-name.git
-       ```
-
-    2. Run scripts:
-
-       ```bash
-       npm run init
-       ```
-
-       Or
-
-       ```bash
-       npm install
-       ```
-
-    3. Start the project:
-
-       ```bash
-       npm run dev
-       ```
-# pcServiceProviderFrontend
+This project is actively under development and may receive regular updates and improvements. Please check the [CHANGELOG.md](link-to-changelog.md) for version history and updates.
