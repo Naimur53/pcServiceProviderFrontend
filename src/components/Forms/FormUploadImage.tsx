@@ -51,7 +51,9 @@ const FormUploadImage: React.FC<props> = ({
         beforeUpload={beforeUpload}
         onChange={handleChange}
       >
-        {showImg ? (
+        {loading ? (
+          <LoadingOutlined />
+        ) : showImg ? (
           imgUrl ? (
             <img src={imgUrl} alt="" />
           ) : (

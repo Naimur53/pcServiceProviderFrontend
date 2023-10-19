@@ -57,13 +57,9 @@ const ServiceDetailsCard = ({
   };
   return (
     <div className=" ">
-      <div className="shadow-lg rounded-lg  first-letter">
+      <div className=" rounded-lg  first-letter">
         <div className="relative flex justify-center items-center  h-[60vh] overflow-hidden">
-          <img
-            className=" w-full h-full md:h-fit"
-            src="https://images.unsplash.com/photo-1588632901974-5ae3618d967b?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y29tcHV0ZXIlMjByZXBhaXJ8ZW58MHx8MHx8fDA%3D&w=1000"
-            alt=""
-          />
+          <img className=" w-full h-full md:h-fit" src={thumbnail} alt="" />
           <div className="absolute inset-0 flex justify-center items-center bg-black/40">
             <h1 className="mt-2 text-white text-center text-2xl md:text-4xl font-bold mb-3 px-1">
               {name}

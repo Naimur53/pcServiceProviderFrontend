@@ -66,4 +66,15 @@
 .all-service-banner-wrap{
     background-image: url('/images/banner-service.jpg'); 
 } 
+
+.how-it-work-wrap{
+    @apply bg-center bg-cover relative;
+    background-image: url('/images/how.jpg');
+}
+
+.how-it-work-wrap::before{
+    
+    content: '';
+    @apply inline-block absolute inset-0 bg-black/40
+}
 }

@@ -15,7 +15,7 @@ const Logo = (props: Props) => {
           src={"/images/logo.png"}
           alt="pc"
         ></Image>
-        <span className="font-black text-2xl">Easy PC</span>
+        <span className="font-black text-2xl whitespace-nowrap">Easy PC</span>
       </Link>
     </div>
   );

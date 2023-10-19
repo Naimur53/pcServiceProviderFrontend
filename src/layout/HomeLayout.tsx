@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import React from "react";
 
@@ -10,6 +11,7 @@ const HomeLayout = ({ children }: Props) => {
     <div>
       <Navbar></Navbar>
       <main>{children}</main>
+      <Footer></Footer>
     </div>
   );
 };

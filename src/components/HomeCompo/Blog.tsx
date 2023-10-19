@@ -1,18 +1,17 @@
-import ErrorCompo from "@/components/ErrorCompo/ErrorCompo";
-import Loading from "@/components/Loading/Loading";
-import SingleDashboardBlogCard from "@/components/SingleDashboardBlogCard/SingleDashboardBlogCard";
-import AdminLayout from "@/layout/AdminLayout";
-import { useGetBlogsQuery } from "@/redux/features/blog/blogApi";
-import { IBlog } from "@/types/common";
-import { Pagination } from "antd";
 import React, { useState } from "react";
+import Loading from "../Loading/Loading";
+import ErrorCompo from "../ErrorCompo/ErrorCompo";
+import SingleDashboardBlogCard from "../SingleDashboardBlogCard/SingleDashboardBlogCard";
+import { Pagination } from "antd";
+import { IBlog } from "@/types/common";
+import { useGetBlogsQuery } from "@/redux/features/blog/blogApi";
 
 type Props = {};
 
-function AllBlog({}: Props) {
+const Blog = (props: Props) => {
   const [page, setPage] = useState<number>(1);
   const { data, isLoading, isError, isFetching } = useGetBlogsQuery(
-    `page=${page}`
+    `limit=3&page=${page}`
   );
   let content = null;
 
@@ -27,7 +26,6 @@ function AllBlog({}: Props) {
         <div className="grid gird-cols-1 lg:grid-cols-3 gap-4 mt-10">
           {info.map((single) => (
             <SingleDashboardBlogCard
-              forAdmin={true}
               key={single.id}
               {...single}
             ></SingleDashboardBlogCard>
@@ -49,11 +47,17 @@ function AllBlog({}: Props) {
     content = <ErrorCompo error="Data not found!"></ErrorCompo>;
   }
   return (
-    <AdminLayout>
-      <h2 className="dashboard-title">All Blog</h2>
+    <div id="blogs" className="container mt-20">
+      <div className="text-center">
+        <h2 className="text-4xl font-bold">Read our Blogs</h2>
+        <p>
+          We always try to publish at least one blog in a week. It may help you
+          to get know more about your pc
+        </p>
+      </div>
       {content}
-    </AdminLayout>
+    </div>
   );
-}
+};
 
-export default AllBlog;
+export default Blog;

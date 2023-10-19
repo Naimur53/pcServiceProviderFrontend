@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { userLoggedOut } from "@/redux/features/auth/authSlice";
+import { Avatar } from "antd";
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -45,7 +46,7 @@ const DropdownUser = () => {
         href="#"
       >
         <span className="h-[32px] w-[32px] rounded-full flex justify-center items-center">
-          <img
+          <Avatar
             src={user?.profileImg || "/images/demo.png"}
             className="w-full  "
             alt="User img"

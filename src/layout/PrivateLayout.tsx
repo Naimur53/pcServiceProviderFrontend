@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { useAppSelector } from "@/redux/hook";
 import { useRouter } from "next/router";
 import Loading from "@/components/Loading/Loading";
+import Link from "next/link";
 
 interface PrivateLayoutProps {
   children: ReactNode;
@@ -29,7 +30,16 @@ const PrivateLayout: React.FC<PrivateLayoutProps> = ({ children }) => {
       </div>
     );
   }
-
+  if (user.isBlocked) {
+    return (
+      <div className="text-center font-bold text-2xl">
+        <h2>You are blocked by Admin</h2>
+        <Link href={"/"} className="underline cursor-pointer">
+          Back to Home
+        </Link>
+      </div>
+    );
+  }
   return <>{children}</>;
 };
 

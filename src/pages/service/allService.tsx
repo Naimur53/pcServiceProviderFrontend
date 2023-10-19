@@ -21,7 +21,7 @@ const AllService = (props: Props) => {
       </div>
       <div id="all-service" className="mt-10 ">
         <div className="flex flex-col justify-center items-center ">
-          <h4 className="text-3xl font-bold">All service</h4>
+          <h4 className="text-3xl font-bold text-center">All service</h4>
           <p>Find your desire service from our best service</p>
         </div>
         <AllFilterAbleService></AllFilterAbleService>

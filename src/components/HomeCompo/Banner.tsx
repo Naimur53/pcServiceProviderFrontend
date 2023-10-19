@@ -5,7 +5,7 @@ type Props = {};
 
 const Banner = (props: Props) => {
   return (
-    <div className="h-screen">
+    <div className="min-h-screen">
       <div className="container">
         <div className="grid lg:grid-cols-2 grid-cols-1 gap-[40px]">
           <div className="flex  items-center">

@@ -56,7 +56,7 @@ function AllFilterAbleService({}: Props) {
     const info = data.data as PcService[];
     content = (
       <div className="">
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {info.map((single) => (
             <ServiceCard key={single.id} {...single}></ServiceCard>
           ))}
@@ -96,9 +96,9 @@ function AllFilterAbleService({}: Props) {
   return (
     <div className="container mt-10">
       <div className="mt-5 mb-10">
-        <div className="flex flex-col md:flex-row items-center gap-4 mb-5 justify-between">
-          <div className="flex gap-4">
-            <div className="w-[400px] ">
+        <div className="flex flex-col flex-wrap md:flex-row items-center gap-4 mb-5 justify-between">
+          <div className="flex gap-4 flex-wrap">
+            <div className="w-[300px] lg:w-[400px] ">
               <Form submitHandler={() => {}}>
                 <FormSelectField
                   name="category"

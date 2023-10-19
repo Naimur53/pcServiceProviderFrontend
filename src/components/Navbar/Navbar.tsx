@@ -1,14 +1,19 @@
 import { useState } from "react";
 import Logo from "../Logo/Logo";
+import Link from "next/link";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { userLoggedOut } from "@/redux/features/auth/authSlice";
+import { Avatar } from "antd";
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
-
+  const user = useAppSelector((state) => state.user.user);
+  const dispatch = useAppDispatch();
   const handleToggle = () => {
     setToggleMenu(!toggleMenu);
   };
 
   return (
-    <header>
+    <header className="sticky top-0 z-20">
       <div className="px-4 py-2 text-white flex  justify-between bg-main-primary">
         <Logo></Logo>
         <div
@@ -20,18 +25,41 @@ const Navbar = () => {
           id="menu"
         >
           <ul>
-            <li className="md:inline-block cursor-pointer hover:text-gray-500 border-b md:border-none py-2 px-3">
-              Home
+            <li className="md:inline-block cursor-pointer hover:opacity-[.8] border-b md:border-none py-2 px-3">
+              <Link href={"/"}>Home</Link>
             </li>
-            <li className="dropdown md:inline-block cursor-pointer hover:text-gray-500 border-b md:border-none py-2 px-3 relative">
-              <a>Products</a>
+            <li className="dropdown md:inline-block cursor-pointer hover:opacity-[.8] border-b md:border-none py-2 px-3 relative">
+              <Link href={"/service/allService"}>Services</Link>
             </li>
-            <li className="md:inline-block cursor-pointer hover:text-gray-500 border-b md:border-none py-2 px-3">
-              AboutUs
+            <li className="md:inline-block cursor-pointer hover:opacity-[.8] border-b md:border-none py-2 px-3">
+              <Link href={"/#blogs"}>Blogs</Link>
             </li>
-            <li className="md:inline-block cursor-pointer hover:text-gray-500 border-b md:border-none py-2 px-3">
-              ContactUs
-            </li>
+
+            {user?.id ? (
+              <>
+                <li className="md:inline-block cursor-pointer hover:opacity-[.8] border-b md:border-none py-2 px-3">
+                  <Link href={"/dashboard"}>Dashboard</Link>
+                </li>
+
+                <li className="md:inline-block cursor-pointer hover:opacity-[.8] border-b md:border-none py-2 px-3">
+                  <Link href={"/dashboard/profile"}>
+                    <Avatar src={user.profileImg}></Avatar>
+                    <span className="font-bold inline-block ml-2">
+                      {user.name}
+                    </span>
+                  </Link>
+                </li>
+                <li className="md:inline-block cursor-pointer hover:opacity-[.8] border-b md:border-none py-2 px-3">
+                  <button onClick={() => dispatch(userLoggedOut())}>
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <li className="md:inline-block cursor-pointer hover:opacity-[.8] border-b md:border-none py-2 px-3">
+                <Link href={"/signIn"}>Login</Link>
+              </li>
+            )}
           </ul>
         </div>
         <div className="cursor-pointer md:hidden">

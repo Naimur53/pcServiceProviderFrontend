@@ -53,7 +53,7 @@ const ServiceCard = ({
       <div className="relative">
         <img className="rounded-t-lg w-full" src={thumbnail} alt="" />
         <button
-          className={`inline-block absolute right-3 top-3 px-4 rounded-full py-1 ${
+          className={`inline-block text-sm md:text-md absolute right-3 top-3 px-4 rounded-full py-1 ${
             availability === ServiceAvailability.UNAVAILABLE
               ? "bg-red-500 text-white capitalize"
               : "bg-main-primary text-white capitalize"
@@ -66,7 +66,7 @@ const ServiceCard = ({
           </span>
         </button>
         <button
-          className={`inline-block absolute left-3 top-3 px-4 rounded-full py-1 bg-gray-400/75 font-bold text-white capitalize`}
+          className={`inline-block  text-sm md:text-md absolute left-3 top-3 px-4 rounded-full py-1 bg-gray-400/75 font-bold text-white capitalize`}
         >
           <span>{category.split("_").join(" ").toLowerCase()}</span>
         </button>

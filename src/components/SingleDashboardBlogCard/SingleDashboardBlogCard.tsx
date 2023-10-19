@@ -7,11 +7,13 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import BlogForm from "../Forms/BlogForm";
 import { Modal, Popconfirm } from "antd";
+import Link from "next/link";
 
-type Props = {} & IBlog;
+type Props = { forAdmin?: boolean } & IBlog;
 
 const SingleDashboardBlogCard = ({
   content,
+  forAdmin,
   createdAt,
   id,
   thumbnails,
@@ -43,40 +45,47 @@ const SingleDashboardBlogCard = ({
     <div className="shadow rounded-xl">
       <img src={thumbnails} className="w-full rounded-xl" alt="" />
       <div className="px-3 py-4 ">
-        <h4 className="text-xl font-bold capitalize">{title}</h4>
+        <Link
+          href={`/blog/${id}`}
+          className="text-2xl hover:text-main-primary transition-all font-bold capitalize underline"
+        >
+          {title}
+        </Link>
 
-        <div className="flex gap-4 mt-5">
-          <button
-            onClick={() => setIsOpen(true)}
-            className="px-4 py-1 bg-blue-600 rounded text-white s"
-          >
-            Edit
-          </button>
-          <Popconfirm
-            title="Are your Sure to delete this blog?"
-            placement="leftTop"
-            onConfirm={handleDelete}
-            okButtonProps={{
-              className: "!border !border-blue-300 text-blue-500",
-            }}
-          >
-            <button className="px-4 py-1 border-red-600 text-red-600 rounded border">
-              Delete
+        {forAdmin ? (
+          <div className="flex gap-4 mt-5">
+            <button
+              onClick={() => setIsOpen(true)}
+              className="px-4 py-1 bg-blue-600 rounded text-white s"
+            >
+              Edit
             </button>
-          </Popconfirm>
-          <Modal
-            title="Update Blog"
-            open={isOpen}
-            onCancel={() => setIsOpen(false)}
-            footer={null}
-          >
-            <BlogForm
-              onSubmit={onSubmit}
-              defaultValues={{ content, thumbnails, title }}
-              isLoading={isDeleteLoading || isEditBlogLoading}
-            ></BlogForm>
-          </Modal>
-        </div>
+            <Popconfirm
+              title="Are your Sure to delete this blog?"
+              placement="leftTop"
+              onConfirm={handleDelete}
+              okButtonProps={{
+                className: "!border !border-blue-300 text-blue-500",
+              }}
+            >
+              <button className="px-4 py-1 border-red-600 text-red-600 rounded border">
+                Delete
+              </button>
+            </Popconfirm>
+            <Modal
+              title="Update Blog"
+              open={isOpen}
+              onCancel={() => setIsOpen(false)}
+              footer={null}
+            >
+              <BlogForm
+                onSubmit={onSubmit}
+                defaultValues={{ content, thumbnails, title }}
+                isLoading={isDeleteLoading || isEditBlogLoading}
+              ></BlogForm>
+            </Modal>
+          </div>
+        ) : null}
       </div>
     </div>
   );
