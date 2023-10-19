@@ -12,11 +12,16 @@ export const bookingApi = apiSlice.injectEndpoints({
     }),
     getBookingById: builder.query({
       query: (id) => `/booking/${id}`,
+      providesTags: [tagTypes.booking],
+    }),
+    getSingleUserBookingByUserId: builder.query({
+      query: (id) => `/booking/singleUserAllBooking/${id}`,
+      providesTags: [tagTypes.booking],
     }),
     addBooking: builder.mutation({
       query: (info) => {
         return {
-          url: "/bookings",
+          url: "/booking",
           method: "POST",
           body: info,
         };
@@ -40,6 +45,7 @@ export const bookingApi = apiSlice.injectEndpoints({
           method: "DELETE",
         };
       },
+      invalidatesTags: [tagTypes.booking],
     }),
   }),
 });
@@ -48,5 +54,6 @@ export const {
   useAddBookingMutation,
   useDeleteBookingMutation,
   useEditBookingMutation,
+  useGetSingleUserBookingByUserIdQuery,
   useGetBookingByIdQuery,
 } = bookingApi;

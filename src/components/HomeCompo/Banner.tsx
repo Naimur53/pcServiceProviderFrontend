@@ -20,7 +20,7 @@ const Banner = (props: Props) => {
                 problems, our skilled technicians are here to help.
               </p>
               <Link
-                href="/allService"
+                href="/service/allService"
                 className="px-5 inline-block py-2 bg-main-primary text-white font-bold mt-5"
               >
                 Checkout service

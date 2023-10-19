@@ -31,7 +31,7 @@ const SingleDashboardBlogCard = ({
       });
   };
   const onSubmit = (data: any) => {
-    editBlog(data)
+    editBlog({ ...data, id })
       .then((res) => {
         toast.success("successfully updated");
       })

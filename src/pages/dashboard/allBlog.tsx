@@ -24,7 +24,7 @@ function AllBlog({}: Props) {
     const info = data.data as IBlog[];
     content = (
       <div>
-        <div className="grid grid-cols-3 gap-4 mt-10">
+        <div className="grid gird-cols-1 lg:grid-cols-3 gap-4 mt-10">
           {info.map((single) => (
             <SingleDashboardBlogCard
               key={single.id}

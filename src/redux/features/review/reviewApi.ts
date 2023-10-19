@@ -1,30 +1,31 @@
-
 import { apiSlice } from "../apiSlice/apiSlice";
+import { tagTypes } from "../apiSlice/tagTypesList";
 export const reviewApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getReviews: builder.query({
       query: (query) => {
         return {
-          url: `/reviews?${query}`,
+          url: `/review?${query}`,
         };
       },
     }),
     getReviewById: builder.query({
-      query: (id) => `/reviews/${id}`,
+      query: (id) => `/review/${id}`,
     }),
     addReview: builder.mutation({
       query: (info) => {
         return {
-          url: "/reviews",
+          url: "/review",
           method: "POST",
           body: info,
         };
       },
+      invalidatesTags: [tagTypes.pcService],
     }),
     editReview: builder.mutation({
       query: (info) => {
         return {
-          url: `/reviews/${info._id}`,
+          url: `/review/${info.id}`,
           method: "PATCH",
           body: info,
         };
@@ -33,7 +34,7 @@ export const reviewApi = apiSlice.injectEndpoints({
     deleteReview: builder.mutation({
       query: (id) => {
         return {
-          url: `/reviews/${id}`,
+          url: `/review/${id}`,
           method: "DELETE",
         };
       },

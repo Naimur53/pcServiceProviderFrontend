@@ -23,7 +23,7 @@ const MyCarts = (props: Props) => {
   } else if (data.data.length) {
     const info = data.data as Cart[];
     content = (
-      <div className="grid grid-cols-3 gap-4 mt-10">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mt-10">
         {info.map((single) => (
           <CartCard key={single.id} {...single}></CartCard>
         ))}

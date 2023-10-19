@@ -16,7 +16,19 @@ const AddService = (props: Props) => {
     useAddPcServiceMutation();
 
   const onSubmit = async (data: any) => {
-    addService(data);
+    addService(data)
+      .unwrap()
+      .then((res) => {
+        console.log(res);
+        if (res.error) {
+          toast.error("something went wrong");
+        } else {
+          toast.success("success");
+        }
+      })
+      .catch(() => {
+        toast.error("something went wrong");
+      });
   };
 
   useEffect(() => {

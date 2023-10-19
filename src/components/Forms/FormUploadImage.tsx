@@ -25,11 +25,13 @@ interface props {
   handleChange: UploadProps["onChange"];
   loading: boolean;
   imgUrl?: string;
+  showImg?: boolean;
 }
 const FormUploadImage: React.FC<props> = ({
   handleChange,
   loading,
   imgUrl,
+  showImg,
 }) => {
   const uploadButton = (
     <div>
@@ -49,7 +51,15 @@ const FormUploadImage: React.FC<props> = ({
         beforeUpload={beforeUpload}
         onChange={handleChange}
       >
-        {uploadButton}
+        {showImg ? (
+          imgUrl ? (
+            <img src={imgUrl} alt="" />
+          ) : (
+            uploadButton
+          )
+        ) : (
+          uploadButton
+        )}
       </Upload>
     </>
   );

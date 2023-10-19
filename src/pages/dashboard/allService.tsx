@@ -10,6 +10,7 @@ import { PcService, ServiceAvailability } from "@/types/common";
 import Link from "next/link";
 import React, { useState } from "react";
 import { Button, Pagination, Popconfirm } from "antd";
+import ServiceCard from "@/components/ServiceCard/ServiceCard";
 type Props = {};
 
 function AllService({}: Props) {
@@ -27,30 +28,11 @@ function AllService({}: Props) {
   } else if (data?.data.length) {
     content = (
       <div>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-1   xl:grid-cols-2 2xl:grid-cols-3 gap-3">
           {data.data.map((single: PcService) => (
             <div key={single.id} className="border rounded ">
-              <div className="relative">
-                <img className="w-full rounded" src={single.thumbnail} alt="" />
-                <div className="absolute right-0 top-0">
-                  <span className=" capitalize bg-blue-400/70 p-2 rounded ">
-                    {single.availability.split("_").join(" ").toLowerCase()}
-                  </span>
-                </div>
-              </div>
+              <ServiceCard {...single}></ServiceCard>
               <div className="px-2 py-3 ">
-                <h2 className="text-2xl font-bold">{single.name}</h2>
-                <div className="mt-4">
-                  <p>{single.description}</p>
-                </div>
-                <div className="mt-4 text-sm flex gap-2">
-                  <span className="border inline-blocks p-2 border-blue-400 rounded-xl">
-                    {single.category}
-                  </span>
-                  <span className="border inline-blocks p-2 border-blue-400 rounded-xl">
-                    {single.location}
-                  </span>
-                </div>
                 <Link
                   className="mr-3"
                   href={`/dashboard/editService/${single.id}`}

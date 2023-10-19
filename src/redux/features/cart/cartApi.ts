@@ -25,7 +25,7 @@ export const cartApi = apiSlice.injectEndpoints({
     addCart: builder.mutation({
       query: (info) => {
         return {
-          url: "/carts",
+          url: "/cart",
           method: "POST",
           body: info,
         };

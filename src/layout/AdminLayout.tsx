@@ -20,7 +20,9 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
     );
   }
 
-  if (user?.role !== UserRole.Admin) {
+  const notAdmin = user?.role !== UserRole.Admin;
+  const notSuperAdmin = user?.role !== UserRole.SuperAdmin;
+  if (notAdmin && notSuperAdmin) {
     router.push({
       pathname: "/dashboard",
       //   query: { from: router.pathname },

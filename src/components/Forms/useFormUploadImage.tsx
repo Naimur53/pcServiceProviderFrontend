@@ -29,10 +29,11 @@ type output = {
   handleChange: UploadProps["onChange"];
   loading: boolean;
   url: string | undefined;
+  setUrl: (value: string | null) => void;
 };
-const useFormUploadImage = (): output => {
+const useFormUploadImage = (defaultUrl?: string): output => {
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState<string>();
+  const [imageUrl, setImageUrl] = useState<string | null>(defaultUrl || null);
 
   const handleChange: UploadProps["onChange"] = (
     info: UploadChangeParam<UploadFile>
@@ -58,6 +59,7 @@ const useFormUploadImage = (): output => {
     handleChange,
     loading,
     url: imageUrl || undefined,
+    setUrl: setImageUrl,
   };
 };
 

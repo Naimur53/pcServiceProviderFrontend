@@ -31,6 +31,7 @@ export const pcServiceApi = apiSlice.injectEndpoints({
           body: info,
         };
       },
+      invalidatesTags: [tagTypes.pcService],
     }),
     deletePcService: builder.mutation({
       query: (id) => {

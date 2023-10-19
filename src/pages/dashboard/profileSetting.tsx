@@ -18,6 +18,7 @@ const ProfileSetting = (props: Props) => {
   const [editUser, { isLoading: isEditLoading }] = useEditUserMutation();
   const dispatch = useAppDispatch();
   const user = userInfo.user;
+
   const {
     handleChange,
     loading: imageUploadLoading,
@@ -74,7 +75,7 @@ const ProfileSetting = (props: Props) => {
   return (
     <DashboardLayout>
       <div>
-        <h1 className="dashboard-title">profile Settings</h1>
+        <h1 className="dashboard-title mb-2">Profile Settings</h1>
         <div>
           <Form
             submitHandler={onSubmit}
@@ -108,7 +109,7 @@ const ProfileSetting = (props: Props) => {
             <h4 className="mt-10 font-bold text-xl">
               Change Profile Information
             </h4>
-            <div className="grid-cols-2 mt-10 grid gap-5">
+            <div className="grid-cols-1 md:grid-cols-2 mt-10 grid gap-5">
               <div>
                 <FormInput
                   name="name"

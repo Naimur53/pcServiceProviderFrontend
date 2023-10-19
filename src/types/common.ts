@@ -127,7 +127,7 @@ export interface Review {
   userId: string;
   pcServiceId: string;
   rating: number;
-  content: string;
+  comment: string;
   createdAt: Date;
   updatedAt: Date;
   user?: IUser;

@@ -2,11 +2,13 @@ import { useDeleteCartMutation } from "@/redux/features/cart/cartApi";
 import { Cart } from "@/types/common";
 import { Popconfirm } from "antd";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
+import BookingModal from "../ServiceCard/BookingModal";
 type Props = {} & Cart;
 
 const CartCard = ({ id, userId, pcServiceId, pcService }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
   const [deleteCart, { isLoading }] = useDeleteCartMutation();
   const handleDelete = () => {
     deleteCart(id)
@@ -37,25 +39,41 @@ const CartCard = ({ id, userId, pcServiceId, pcService }: Props) => {
             <div>
               <span>Price:{pcService.price}</span>
               <div className="mt-4 pb-4">
-                <button className="px-4 py-1 rounded  text-white bg-blue-500 mr-2">
-                  Booking
-                </button>
-                <Popconfirm
-                  title="Are you sure to delete user?"
-                  onConfirm={handleDelete}
-                  placement="leftTop"
-                  description="you will lost all review, booking, feedback of this user"
-                  okButtonProps={{
-                    className: "!border !border-blue-300 text-blue-500",
-                  }}
-                >
+                <div>
                   <button
-                    disabled={isLoading}
-                    className="px-4 py-1 text-white rounded bg-red-500 "
+                    onClick={() => setIsOpen(true)}
+                    className="px-4 py-1 rounded  text-white bg-blue-500 mr-2"
                   >
-                    Remove
+                    Booking
                   </button>
-                </Popconfirm>
+                  <BookingModal
+                    {...pcService}
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                  ></BookingModal>
+                  <Popconfirm
+                    title="Are you sure to delete user?"
+                    onConfirm={handleDelete}
+                    placement="leftTop"
+                    description="you will lost all review, booking, feedback of this user"
+                    okButtonProps={{
+                      className: "!border !border-blue-300 text-blue-500",
+                    }}
+                  >
+                    <button
+                      disabled={isLoading}
+                      className="px-4 py-1 text-white rounded bg-red-500 "
+                    >
+                      Remove
+                    </button>
+                  </Popconfirm>
+                </div>
+                <Link
+                  href={`/service/${pcServiceId}`}
+                  className="mt-3 px-4 py-1 inline-block bg-slate-500/30 rounded"
+                >
+                  View
+                </Link>
               </div>
             </div>
           </div>

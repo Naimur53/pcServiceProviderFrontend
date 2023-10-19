@@ -16,6 +16,7 @@ import {
   faCartShopping,
   faCommentMedical,
   faComment,
+  faRectangleList,
 } from "@fortawesome/free-solid-svg-icons";
 const common: INavItems[] = [
   {
@@ -32,7 +33,6 @@ const common: INavItems[] = [
   },
 ];
 const adminItems: INavItems[] = [
-  common[0],
   {
     name: "All Services",
     to: "/allService",
@@ -81,7 +81,6 @@ const adminItems: INavItems[] = [
     matchUrl: "/dashboard/allFeedback",
     icon: faComment,
   },
-  common[1],
 ];
 const superAdminItems: INavItems[] = [
   common[0],
@@ -97,10 +96,17 @@ const superAdminItems: INavItems[] = [
     matchUrl: "/dashboard/addAdmin",
     icon: faUserPen,
   },
+  ...adminItems,
   common[1],
 ];
 const userItems = [
   common[0],
+  {
+    name: "My booking",
+    to: "/myOrders",
+    matchUrl: "/dashboard/myOrders",
+    icon: faRectangleList,
+  },
   {
     name: "My carts",
     to: "/myCarts",
@@ -116,7 +122,7 @@ const userItems = [
   common[1],
 ];
 export const dashboardSidebarItem = {
-  adminItems,
+  adminItems: [common[0], ...adminItems, common[1]],
   superAdminItems,
   userItems,
 };

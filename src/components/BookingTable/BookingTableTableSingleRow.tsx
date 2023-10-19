@@ -108,7 +108,7 @@ const BookingTableTableSingleRow = ({
           <div>
             <Link
               className="flex items-center pl-5 hover:underline"
-              href={`/dashboard/editService/${pcServiceId}`}
+              href={`/service/${pcServiceId}`}
             >
               <p className="text-base font-medium leading-none text-gray-700 mr-2">
                 {pcService?.name}
