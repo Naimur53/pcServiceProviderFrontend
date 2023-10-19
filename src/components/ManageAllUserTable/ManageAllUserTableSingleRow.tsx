@@ -36,7 +36,11 @@ const ManageAllUserTableSingleRow = ({
   return (
     <tr className="focus:outline-none text-center h-16 border border-gray-300 mt-2 rounded">
       <td className="pl-2">
-        {profileImg ? <img src={profileImg} alt="user" /> : <div>No Img</div>}
+        {profileImg ? (
+          <img className="max-w-[40px]" src={profileImg} alt="user" />
+        ) : (
+          <div>No Img</div>
+        )}
       </td>
       <td>{name}</td>
       <td>{email}</td>

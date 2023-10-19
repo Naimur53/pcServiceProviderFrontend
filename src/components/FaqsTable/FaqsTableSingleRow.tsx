@@ -35,36 +35,40 @@ function FaqsTableSingleRow({ answer, createAt, id, question }: Props) {
   };
   return (
     <>
-      <tr className="text-center">
+      <tr className=" ">
         <td className="px-2">
-          {isEditing ? (
-            <Input
-              type="text"
-              value={editedFaq.question}
-              defaultValue={question}
-              placeholder="Enter Question"
-              onChange={(e) =>
-                setEditedFaq({
-                  ...editedFaq,
-                  question: e.target.value,
-                })
-              }
-            />
-          ) : (
-            question
-          )}
+          <div className="max-w-[300px] whitespace-pre-wrap">
+            {isEditing ? (
+              <Input
+                type="text"
+                value={editedFaq.question}
+                defaultValue={question}
+                placeholder="Enter Question"
+                onChange={(e) =>
+                  setEditedFaq({
+                    ...editedFaq,
+                    question: e.target.value,
+                  })
+                }
+              />
+            ) : (
+              question
+            )}
+          </div>
         </td>
         <td className="px-2">
-          {isEditing ? (
-            <Input.TextArea
-              value={editedFaq.answer}
-              onChange={(e) =>
-                setEditedFaq({ ...editedFaq, answer: e.target.value })
-              }
-            />
-          ) : (
-            answer
-          )}
+          <div className="max-w-[300px] whitespace-pre-wrap">
+            {isEditing ? (
+              <Input.TextArea
+                value={editedFaq.answer}
+                onChange={(e) =>
+                  setEditedFaq({ ...editedFaq, answer: e.target.value })
+                }
+              />
+            ) : (
+              answer
+            )}
+          </div>
         </td>
         <td>
           {isEditing ? (
