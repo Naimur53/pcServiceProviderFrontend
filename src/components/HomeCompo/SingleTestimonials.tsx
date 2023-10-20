@@ -17,11 +17,12 @@ const SingleTestimonials = ({ user, comment, id, title }: Props) => {
           <></>
         )}
       </div>
-      <h5 className=" text-lg font-bold">{user?.name || "Demo Name"}</h5>
-      <h6 className="mb-4 font-medium text-primary dark:text-primary-400">
-        {user?.email || "demo@gmail.com"}
+      <h5 className=" text-xl mb-1 font-bold">{user?.name || "Demo Name"}</h5>
+      <h5 className="  mb-4 font-bold">{user?.email || "demo@gmail.com"}</h5>
+      <h6 className="mb-1 text-xl font-medium text-primary dark:text-primary-400">
+        {title}
       </h6>
-      <p className="mb-4">{comment}</p>
+      <p className="mb-4 px-4">{comment}</p>
     </div>
   );
 };

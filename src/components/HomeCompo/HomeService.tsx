@@ -32,7 +32,7 @@ const HomeService = (props: Props) => {
   }
   return (
     <div className="container">
-      <h2 className="text-center font-bold text-4xl mt-10">Our Services</h2>
+      <h2 className="text-center font-bold text-4xl ">Our Services</h2>
       <p className="text-center text-xl">Here is our few services for you!</p>
       <div className="flex justify-center pb-20">
         <Link
