@@ -61,10 +61,9 @@ const OrdersCard = ({
 
   return (
     <div className="shadow">
-      <img
-        src="https://images.unsplash.com/photo-1588632901974-5ae3618d967b?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y29tcHV0ZXIlMjByZXBhaXJ8ZW58MHx8MHx8fDA%3D&w=1000"
-        alt="product"
-      />
+      {pcService?.thumbnail ? (
+        <img src={pcService?.thumbnail} alt="product" />
+      ) : null}
       <div className="p-3">
         <h2 className=" text-xl font-bold">{pcService?.name}</h2>
         <h2>Price: ${pcService?.price}</h2>
