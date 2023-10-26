@@ -1,13 +1,11 @@
 import useScrollValues from "@/hooks/useScrollValues";
 import Link from "next/link";
 import React from "react";
+import BannerGradient from "./BannerGradient";
 
 type Props = {};
 
 const Banner = (props: Props) => {
-  const { scrollY, smoothedScrollY } = useScrollValues();
-
-  console.log({ scrollY, smoothedScrollY });
   return (
     <div className="min-h-screen relative">
       <div className="container relative z-30 bg-transparent">
@@ -40,16 +38,7 @@ const Banner = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="absolute inset-0 overflow-hidden  ">
-        <div className="absolute inset-0 ">
-          <div className="w-[300px] absolute left-0 h-[300px] rounded-full bg-yellow-400 blur-[200px]"></div>
-          <div className="w-[300px] absolute bottom-0 left-1/2 h-[300px] rounded-full bg-teal-400 -translate-x-1/2 blur-[190px]"></div>
-          <div className="w-[200px] absolute bottom-0 right-0 -translate-y-1/2 h-[200px] rounded-full bg-purple-600 -translate-x-1/2 blur-[120px]"></div>
-        </div>
-        <div className="absolute inset-0 z-20">
-          <div className="w-[100px] absolute top-1/4 right-[100px] -translate-y-1/2 h-[100px] rounded-full bg-teal-300 -translate-x-1/2 blur-[5px]"></div>
-        </div>
-      </div>
+      <BannerGradient></BannerGradient>
     </div>
   );
 };

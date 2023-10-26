@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-20">
+    <header className="sticky top-0 z-[50]">
       <div className="px-4 py-2 text-white flex  justify-between bg-main-primary">
         <Logo></Logo>
         <div
