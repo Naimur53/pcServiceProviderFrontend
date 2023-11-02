@@ -3,6 +3,7 @@ import { useAppSelector } from "@/redux/hook";
 import { PcService, ServiceAvailability } from "@/types/common";
 import { Rate } from "antd";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import { toast } from "react-toastify";
 type Props = {} & PcService;
@@ -16,6 +17,7 @@ const ServiceCard = ({
   location,
   category,
   thumbnail,
+  description,
 }: Props) => {
   const user = useAppSelector((state) => state.user);
   const [addToCart, { isLoading, isSuccess, isError }] = useAddCartMutation();
@@ -47,11 +49,21 @@ const ServiceCard = ({
         toast.error(err?.data?.message || "Failed to add to cart");
       });
   };
-
+  const router = useRouter();
+  const handleClick = () => {
+    router.push(`/service/${id}`);
+  };
   return (
-    <div className="shadow-lg rounded-lg">
+    <div
+      onClick={handleClick}
+      className="bg-white/90 backdrop-blur-sm rounded-xl overflow-hidden cursor-pointer"
+    >
       <div className="relative">
-        <img className="rounded-t-lg w-full" src={thumbnail} alt="" />
+        {/* <img className="rounded-t-lg w-full" src={thumbnail} alt="" /> */}
+        <div
+          className=" w-full h-[200px] bg-no-repeat bg-cover "
+          style={{ backgroundImage: `url(${thumbnail})` }}
+        ></div>
         <button
           className={`inline-block text-sm md:text-md absolute right-3 top-3 px-4 rounded-full py-1 ${
             availability === ServiceAvailability.UNAVAILABLE
@@ -66,7 +78,7 @@ const ServiceCard = ({
           </span>
         </button>
         <button
-          className={`inline-block  text-sm md:text-md absolute left-3 top-3 px-4 rounded-full py-1 bg-gray-400/75 font-bold text-white capitalize`}
+          className={`inline-block  text-sm md:text-md absolute left-3 top-3 px-4 rounded-full py-1 backdrop-blur-md font-bold bg-white/60 text-black capitalize`}
         >
           <span>{category.split("_").join(" ").toLowerCase()}</span>
         </button>
@@ -83,29 +95,37 @@ const ServiceCard = ({
           </span>
         </div>
       </div>
-      <div className="flex justify-center py-2">
-        <Rate value={rating} disabled></Rate>
+      <div className="flex justify-center py-5 px-4 lg:px-20 ">
+        <div className="bg-purple-400/10 rounded-lg py-3 flex justify-center flex-col gap-2 items-center w-full">
+          <Rate value={rating} disabled></Rate>
+          <p className="text-gray-500">
+            <span className="font-bold">{reviews?.length}</span> customers
+            rating{" "}
+          </p>
+        </div>
       </div>
-      <div className="flex justify-between px-2 pb-5">
+      <div className="flex justify-center px-2 mt-3 pb-5">
         {isSuccess ? (
-          <button className="bg-green-600 text-white px-4 py-1 rounded font-semibold">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+            className="bg-green-600 text-white px-4 py-1 rounded font-semibold"
+          >
             Added to Cart
           </button>
         ) : (
           <button
-            onClick={handleAddToCart}
             disabled={isLoading}
-            className="bg-main-primary text-white px-4 py-1 rounded font-semibold"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleAddToCart();
+            }}
+            className="bg-yellow-500 text-white px-10 py-2  rounded-3xl font-semibold"
           >
             Add to Cart
           </button>
         )}
-        <Link
-          href={`/service/${id}`}
-          className="bg-gray-400/25 text-black px-4 py-1 rounded font-semibold"
-        >
-          View
-        </Link>
       </div>
     </div>
   );

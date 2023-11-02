@@ -22,7 +22,7 @@ const PrivateLayout: React.FC<PrivateLayoutProps> = ({ children }) => {
   if (!user?.email) {
     router.push({
       pathname: "/signIn",
-      query: { from: router.pathname },
+      query: { from: router.asPath },
     });
     return (
       <div className="flex justify-center">

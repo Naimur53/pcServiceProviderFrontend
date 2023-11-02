@@ -13,8 +13,8 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-[50]">
-      <div className="px-4 py-2 text-white flex  justify-between bg-main-primary">
+    <header className="fixed w-full top-0 z-[50]">
+      <div className="px-4 py-2 text-whdite flex  justify-between text-black bg-white/50 backdrop-blur-xl">
         <Logo></Logo>
         <div
           className={

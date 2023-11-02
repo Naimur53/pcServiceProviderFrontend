@@ -40,6 +40,16 @@ export interface IUser {
   isBlocked?: Boolean;
   profileImg: string | null;
 }
+export interface IAllCategoryOfPcService {
+  _count: {
+    _all: number;
+  };
+  _min: {
+    price: number;
+    thumbnail: string;
+  };
+  category: string;
+}
 
 export enum UserRole {
   Customer = "customer",

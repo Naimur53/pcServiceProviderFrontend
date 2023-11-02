@@ -32,7 +32,8 @@ const SignIn: React.FC = () => {
     if (error) {
       toast.error(error);
     } else if (!isLoading && user?.email) {
-      if (router.query && router.query.from) {
+      console.log(router);
+      if (router.query && router?.query?.from) {
         router.push(router.query.from as string);
       } else {
         router.push(router.locale || "/");
@@ -41,7 +42,7 @@ const SignIn: React.FC = () => {
     return () => {
       dispatch(setError({ isError: false, error: "" }));
     };
-  }, [error, isLoading, user, router]);
+  }, [error, isLoading, user, router, dispatch]);
 
   if (isLoading) {
     return <Loading></Loading>;

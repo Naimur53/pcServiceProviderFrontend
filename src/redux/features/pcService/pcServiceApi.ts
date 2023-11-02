@@ -10,6 +10,13 @@ export const pcServiceApi = apiSlice.injectEndpoints({
       },
       providesTags: [tagTypes.pcService],
     }),
+    getAllCategoryOfPcService: builder.query({
+      query: () => {
+        return {
+          url: `/pcService/allCategoryOfPcService`,
+        };
+      },
+    }),
     getPcServiceById: builder.query({
       query: (id) => `/pcService/${id}`,
     }),
@@ -50,4 +57,5 @@ export const {
   useDeletePcServiceMutation,
   useEditPcServiceMutation,
   useGetPcServiceByIdQuery,
+  useGetAllCategoryOfPcServiceQuery,
 } = pcServiceApi;

@@ -4,7 +4,7 @@ import { tagTypesList } from "./tagTypesList";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://pc-service-provider-backend.vercel.app/api/v1",
+    baseUrl: "http://localhost:5000/api/v1",
 
     prepareHeaders: async (headers, { getState, endpoint }) => {
       const token = localStorage.getItem("accessToken");

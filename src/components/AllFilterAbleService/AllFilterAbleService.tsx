@@ -10,16 +10,21 @@ import { optionCreator } from "@/utils";
 import ServiceCard from "../ServiceCard/ServiceCard";
 import Form from "../Forms/Form";
 import { SliderMarks } from "antd/es/slider";
+import { useRouter } from "next/router";
 
 type Props = {};
 
 function AllFilterAbleService({}: Props) {
-  const defaultValue = { value: "", label: "" };
+  const router = useRouter();
   const [search, setSearch] = useState<string>("");
   const [price, setPrice] = useState([0, 0]);
   const [page, setPage] = useState<number>(1);
   const debouncedSearch = useDebounce(search, 500); // 500ms debounce delay
   const debouncedPrice = useDebounce(price, 500); // 500ms debounce delay
+  const defaultCategoryValue = router.query?.category as string;
+  const defaultValue = defaultCategoryValue
+    ? { value: defaultCategoryValue, label: defaultCategoryValue }
+    : { value: "", label: "" };
   const [category, setCategory] = useState<SelectOptions>(defaultValue);
 
   const queryString = useMemo(() => {
@@ -93,6 +98,7 @@ function AllFilterAbleService({}: Props) {
     0: "$0",
     1000: "$1000",
   };
+
   return (
     <div className="container mt-10">
       <div className="mt-5 mb-10">

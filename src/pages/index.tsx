@@ -15,9 +15,9 @@ export default function Home() {
     <HomeLayout>
       <div>
         <Banner></Banner>
+        <EventsByCategory></EventsByCategory>
         <HomeService></HomeService>
         <UpcommingServices></UpcommingServices>
-        <EventsByCategory></EventsByCategory>
         <HowItsWork></HowItsWork>
         <WhyChooseUs></WhyChooseUs>
         <Testimonials></Testimonials>
