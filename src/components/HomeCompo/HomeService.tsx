@@ -5,6 +5,7 @@ import ErrorCompo from "../ErrorCompo/ErrorCompo";
 import { PcService, ServiceAvailability } from "@/types/common";
 import ServiceCard from "../ServiceCard/ServiceCard";
 import Link from "next/link";
+import HomeServiceBackground from "./HomeServiceBackground";
 
 type Props = {};
 
@@ -31,18 +32,27 @@ const HomeService = (props: Props) => {
     );
   }
   return (
-    <div className="container py-20 bg-yellow-300">
-      <h2 className="text-center font-bold text-4xl ">Our Services</h2>
-      <p className="text-center text-xl">Here is our few services for you!</p>
-      <div className="flex justify-center pb-20 ">
-        <Link
-          className="inline-block px-4 py-1 rounded bg-main-primary text-white mt-3"
-          href={"/service/allService"}
-        >
-          Find All
-        </Link>
+    <div className="relative py-20 bg-yellow-300">
+      <div className="container  relative z-30">
+        <h2 className="text-center font-bold text-4xl ">
+          Our Popular Services
+        </h2>
+        <p className="text-center text-xl pb-20 mt-4 ">
+          Here is our few services that are most loved by our user <br /> Feel
+          free to checkout more services
+        </p>
+
+        <div className="md:px-20">{content}</div>
+        <div className="flex justify-center mt-10">
+          <Link
+            className="inline-block px-10 py-2  rounded-3xl border border-yellow-600  font-semibold mt-3"
+            href={"/service/allService"}
+          >
+            Find All Services
+          </Link>
+        </div>
       </div>
-      <div className="md:px-4">{content}</div>
+      <HomeServiceBackground></HomeServiceBackground>
     </div>
   );
 };

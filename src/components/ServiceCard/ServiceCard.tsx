@@ -65,10 +65,10 @@ const ServiceCard = ({
           style={{ backgroundImage: `url(${thumbnail})` }}
         ></div>
         <button
-          className={`inline-block text-sm md:text-md absolute right-3 top-3 px-4 rounded-full py-1 ${
+          className={`inline-block text-[13px] absolute right-3 top-3 px-4 rounded-full py-1 ${
             availability === ServiceAvailability.UNAVAILABLE
               ? "bg-red-500 text-white capitalize"
-              : "bg-main-primary text-white capitalize"
+              : "bg-teal-500 text-white capitalize"
           }`}
         >
           <span>
@@ -78,39 +78,37 @@ const ServiceCard = ({
           </span>
         </button>
         <button
-          className={`inline-block  text-sm md:text-md absolute left-3 top-3 px-4 rounded-full py-1 backdrop-blur-md font-bold bg-white/60 text-black capitalize`}
+          className={`inline-block  text-[13px] absolute left-3 top-3 px-4 rounded-full py-1 backdrop-blur-md font-bold bg-white/60 text-black capitalize `}
         >
           <span>{category.split("_").join(" ").toLowerCase()}</span>
         </button>
       </div>
-      <h1 className="mt-2 text-2xl font-bold mb-3 px-1">{name}</h1>
-      <div className="flex gap-2 px-1">
-        <div className="inline-block text-center px-4 rounded-full py-1 bg-slate-400/30">
-          Price <span>{price}</span>
-        </div>
+      <h1 className="mt-2 text-2xl text-center font-bold mb-3 px-1">{name}</h1>
+      <div className="flex justify-center text-center  flex-col gap-2 px-1">
+        <p className="text-4xl font-bold text-yellow-500">${price}</p>
 
-        <div className="inline-block text-center capitalize px-4 rounded-full py-1 bg-slate-400/30">
+        <div className="capitalize">
           <span>
             Available in {location.split("_").join(" ").toLowerCase()}
           </span>
         </div>
       </div>
       <div className="flex justify-center py-5 px-4 lg:px-20 ">
-        <div className="bg-purple-400/10 rounded-lg py-3 flex justify-center flex-col gap-2 items-center w-full">
+        <div className="bg-yellow-400/10 rounded-lg py-3 flex justify-center flex-col gap-2 items-center w-full">
           <Rate value={rating} disabled></Rate>
-          <p className="text-gray-500">
+          {/* <p className="text-gray-500">
             <span className="font-bold">{reviews?.length}</span> customers
             rating{" "}
-          </p>
+          </p> */}
         </div>
       </div>
-      <div className="flex justify-center px-2 mt-3 pb-5">
+      <div className="flex justify-center px-2 mt-0 pb-5">
         {isSuccess ? (
           <button
             onClick={(e) => {
               e.stopPropagation();
             }}
-            className="bg-green-600 text-white px-4 py-1 rounded font-semibold"
+            className="bg-teal-600 text-white px-10 py-2  rounded-3xl font-semibold"
           >
             Added to Cart
           </button>
@@ -121,7 +119,7 @@ const ServiceCard = ({
               e.stopPropagation();
               handleAddToCart();
             }}
-            className="bg-yellow-500 text-white px-10 py-2  rounded-3xl font-semibold"
+            className="bg-yellow-400  px-10 py-2  rounded-3xl font-semibold"
           >
             Add to Cart
           </button>
