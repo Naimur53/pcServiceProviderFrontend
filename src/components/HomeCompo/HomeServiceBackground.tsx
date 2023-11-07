@@ -1,18 +1,18 @@
 import useScrollValues from "@/hooks/useScrollValues";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { normalizeScrollValue } from "@/utils";
 type Props = {};
 
 const HomeServiceBackground = (props: Props) => {
-  const { smoothedScrollY: value } = useScrollValues();
-  const smoothedScrollY = normalizeScrollValue(value / 250, 0, 10) * 100;
-  console.log(smoothedScrollY, { value: value / 14 });
-
+  const { progress } = useScrollValues();
+  let smoothedScrollY = progress * 1000;
+  smoothedScrollY -= 130;
+  smoothedScrollY *= 3.3;
   return (
     <div>
       <div className="absolute inset-0 overflow-hidden  opacity-80">
-        <div className="absolute inset-0 z-20">
+        <div className="absolute inset-0 z-20 ">
           <motion.div
             initial={{
               y: -100,
@@ -31,11 +31,23 @@ const HomeServiceBackground = (props: Props) => {
               opacity: 0,
             }}
             animate={{
-              y: smoothedScrollY,
+              y: smoothedScrollY * 1.4,
               opacity: 1,
             }}
             transition={{ type: "just", duration: 0.3, delay: 0 }}
             className="w-[40px] h-[40px] absolute top-[150px] right-[20px] -translate-y-1/2  rounded-full bg-purple-500 -translate-x-1/2 blur-[7px]"
+          ></motion.div>
+          <motion.div
+            initial={{
+              y: -100,
+              opacity: 0,
+            }}
+            animate={{
+              y: smoothedScrollY * 1.3,
+              opacity: 1,
+            }}
+            transition={{ type: "just", duration: 0.3, delay: 0 }}
+            className="w-[150px] h-[150px] absolute top-[350px] right-[20px] -translate-y-1/2  rounded-full bg-white -translate-x-1/2 blur-[7px]"
           ></motion.div>
 
           {/* bottom  background */}
@@ -45,7 +57,7 @@ const HomeServiceBackground = (props: Props) => {
               opacity: 0,
             }}
             animate={{
-              y: -(smoothedScrollY / 4),
+              y: -smoothedScrollY,
               opacity: 1,
             }}
             transition={{ type: "just", duration: 0.3, delay: 0 }}
@@ -57,11 +69,23 @@ const HomeServiceBackground = (props: Props) => {
               opacity: 0,
             }}
             animate={{
-              y: -(smoothedScrollY / 2),
+              y: -smoothedScrollY * 1.4,
               opacity: 1,
             }}
             transition={{ type: "just", duration: 0.3, delay: 0 }}
             className="w-[40px] h-[40px] absolute bottom-[-620px] left-[0px] -translate-y-1/2  rounded-full bg-teal-500 -translate-x-1/2 blur-[7px]"
+          ></motion.div>
+          <motion.div
+            initial={{
+              y: -100,
+              opacity: 0,
+            }}
+            animate={{
+              y: -smoothedScrollY * 1.5,
+              opacity: 1,
+            }}
+            transition={{ type: "just", duration: 0.3, delay: 0 }}
+            className="w-[150px] h-[150px] absolute bottom-[-420px] left-[80px] -translate-y-1/2  rounded-full bg-white -translate-x-1/2 blur-[7px]"
           ></motion.div>
         </div>
       </div>

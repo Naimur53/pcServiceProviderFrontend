@@ -4,6 +4,7 @@ import ErrorCompo from "../ErrorCompo/ErrorCompo";
 import { PcService, ServiceAvailability } from "@/types/common";
 import ServiceCard from "../ServiceCard/ServiceCard";
 import { useGetPcServiceQuery } from "@/redux/features/pcService/pcServiceApi";
+import UpcommingServicesBackground from "./UpcommingServicesBackground";
 
 type Props = {};
 
@@ -30,14 +31,18 @@ const UpcommingServices = (props: Props) => {
     );
   }
   return (
-    <div className="container mt-40">
-      <h2 className="text-center font-bold text-4xl">Our Upcoming Services</h2>
-      <p className="text-center mt-2 text-xl">
-        we are thrilled to announce that we have listed down a few requested
-        services that are now under process{" "}
-      </p>
-      <div className="flex justify-center pb-20"></div>
-      <div>{content}</div>
+    <div className="relative w-full h-full">
+      <div className="container py-40 relative z-50">
+        <h2 className="text-center font-bold text-4xl">
+          Our Upcoming Services
+        </h2>
+        <p className="text-center mt-2 text-xl  pb-20">
+          we are thrilled to announce that we have listed down a few requested
+          services that are now under process{" "}
+        </p>
+        <div>{content}</div>
+      </div>
+      <UpcommingServicesBackground></UpcommingServicesBackground>
     </div>
   );
 };

@@ -72,7 +72,7 @@
 } 
 
 .how-it-work-wrap{
-    @apply bg-center bg-cover relative;
+    @apply bg-center bg-cover relative bg-fixed;
     background-image: url('/images/how.jpg');
 }
 

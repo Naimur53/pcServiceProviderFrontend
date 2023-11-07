@@ -1,9 +1,10 @@
+import { useMotionValueEvent, useScroll } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const useScrollValues = () => {
   const [scrollY, setScrollY] = useState<number>(0);
   const [smoothedScrollY, setSmoothedScrollY] = useState<number>(0);
-
+  const motionScroll = useScroll();
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
     setScrollY(currentScrollY);
@@ -24,8 +25,13 @@ const useScrollValues = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  return { scrollY, smoothedScrollY };
+  return {
+    scrollY,
+    smoothedScrollY,
+    progress: parseFloat(
+      motionScroll?.scrollYProgress.getPrevious().toFixed(2)
+    ),
+  };
 };
 
 export default useScrollValues;
