@@ -38,7 +38,7 @@ const HomeServiceBackground = (props: Props) => {
             className="w-[40px] h-[40px] absolute top-[150px] right-[20px] -translate-y-1/2  rounded-full bg-purple-500 -translate-x-1/2 blur-[7px]"
           ></motion.div>
 
-          {/* bottom  */}
+          {/* bottom  background */}
           <motion.div
             initial={{
               y: -100,
