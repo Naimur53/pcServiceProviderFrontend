@@ -9,7 +9,6 @@ import Testimonials from "@/components/HomeCompo/Testimonials";
 import UpcommingServices from "@/components/HomeCompo/UpcommingServices";
 import WhyChooseUs from "@/components/HomeCompo/WhyChooseUs";
 import HomeLayout from "@/layout/HomeLayout";
-
 export default function Home() {
   return (
     <HomeLayout>

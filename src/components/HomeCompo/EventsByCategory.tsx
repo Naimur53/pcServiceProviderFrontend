@@ -7,6 +7,7 @@ import ErrorCompo from "../ErrorCompo/ErrorCompo";
 import SingleCategoryCard from "./SingleCategoryCard";
 import EventsByCategoryBackground from "./EventsByCategoryBackground";
 import { motion } from "framer-motion";
+import { smoothShowAnimation } from "@/utils/animation";
 
 type Props = {};
 
@@ -22,24 +23,13 @@ const EventsByCategory = (props: Props) => {
     content = <ErrorCompo></ErrorCompo>;
   } else if (data?.data?.length) {
     const all = data.data as IAllCategoryOfPcService[];
-    console.log(all);
-    const container = {
-      hidden: { opacity: 1, y: 0 },
-      show: {
-        opacity: 1,
-        y: 0,
-        transition: {
-          staggerChildren: 0.09,
-          type: "just",
-        },
-      },
-    };
+
     content = (
       <motion.div
-        variants={container}
+        variants={smoothShowAnimation.container}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true }}
+        viewport={{ once: false }}
         transition={{ type: "just" }}
         className="grid grid-cols-1 xl:grid-cols-3 mt-20 gap-x-5 gap-y-10"
       >

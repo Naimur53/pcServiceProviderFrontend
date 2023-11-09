@@ -6,6 +6,7 @@ import Loading from "../Loading/Loading";
 import { ServiceCategory } from "@/types/common";
 import ErrorCompo from "../ErrorCompo/ErrorCompo";
 import { useGetPcServiceQuery } from "@/redux/features/pcService/pcServiceApi";
+import HowItsWorkBackground from "./HowItsWorkBackground";
 
 type Props = {};
 
@@ -43,12 +44,12 @@ const HowItsWork = (props: Props) => {
         {info.map((single) => (
           <div
             key={single.title}
-            className="cursor-pointer shadow-lg py-10 border bg-white/[0.13] backdrop-blur-sm"
+            className="cursor-pointer shadow-lg py-10 rounded-2xl  bg-black/[0.41] backdrop-blur-lg"
           >
-            <p className="uppercase text-xl text-center text-white font-bold">
+            <p className="uppercase text-2xl text-center text-white font-bold">
               {single.title}
             </p>
-            <div className="text-center text-4xl font-bold mt-3">
+            <div className="text-center text-4xl font-bold mt-3 text-yellow-300">
               {single.value}
             </div>
           </div>
@@ -59,18 +60,23 @@ const HowItsWork = (props: Props) => {
     content = <ErrorCompo error="Enough data not found"></ErrorCompo>;
   }
   return (
-    <div className="min-h-[60vh] how-it-work-wrap mt-20 flex justify-center items-center">
-      <div className="container">
-        <div className="flex justify-center relative z-10">
-          <div className=" text-center text-white pt-20">
-            <h2 className="lg:text-4xl text-xl font-semibold">
-              We have most interesting client and Services over this year
-            </h2>
-            <p className="mt-2 font-semibold">Watch out our most total work</p>
-            <div>{content}</div>
+    <div className="relative">
+      <div className="min-h-[60vh] how-it-work-wrap pt-10 pb-20 flex justify-center items-center ">
+        <div className="container relative z-30">
+          <div className="flex justify-center relative z-10">
+            <div className=" text-center text-white pt-20">
+              <h2 className="lg:text-4xl text-xl font-semibold">
+                We have most interesting client and Services over this year
+              </h2>
+              <p className="mt-2 font-semibold">
+                Watch out our most total work
+              </p>
+              <div>{content}</div>
+            </div>
           </div>
         </div>
       </div>
+      <HowItsWorkBackground></HowItsWorkBackground>
     </div>
   );
 };

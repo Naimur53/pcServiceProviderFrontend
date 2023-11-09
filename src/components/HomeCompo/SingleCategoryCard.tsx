@@ -8,6 +8,7 @@ import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { smoothShowAnimation } from "@/utils/animation";
 type Props = {} & IAllCategoryOfPcService;
 
 const SingleCategoryCard = ({
@@ -16,10 +17,7 @@ const SingleCategoryCard = ({
   _min: { price, thumbnail },
 }: Props) => {
   const router = useRouter();
-  const item = {
-    hidden: { opacity: 1, y: 60 },
-    show: { opacity: 1, y: 0, transition: { type: "just" } },
-  };
+
   const handleClick = () => {
     router.push({
       pathname: `/service/allService`,
@@ -28,7 +26,7 @@ const SingleCategoryCard = ({
   };
   return (
     <motion.div
-      variants={item}
+      variants={smoothShowAnimation.item}
       onClick={handleClick}
       className="group h-full bg-white/60 backdrop-blur-lg rounded-xl"
     >

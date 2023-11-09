@@ -9,7 +9,6 @@ const UpcommingServicesBackground = (props: Props) => {
   value -= 340;
   value *= 5;
   value = 1000 - value;
-  console.log(value);
 
   return (
     <div className="absolute z-10 inset-0 overflow-hidden">

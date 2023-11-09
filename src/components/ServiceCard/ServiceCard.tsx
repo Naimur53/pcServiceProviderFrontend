@@ -1,7 +1,7 @@
 import { useAddCartMutation } from "@/redux/features/cart/cartApi";
 import { useAppSelector } from "@/redux/hook";
 import { PcService, ServiceAvailability } from "@/types/common";
-import { Rate } from "antd";
+import { Divider, Rate } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -93,38 +93,44 @@ const ServiceCard = ({
           </span>
         </div>
       </div>
-      <div className="flex justify-center py-5 px-4 lg:px-20 ">
-        <div className="bg-yellow-400/10 rounded-lg py-3 flex justify-center flex-col gap-2 items-center w-full">
-          <Rate value={rating} disabled></Rate>
-          {/* <p className="text-gray-500">
+      {availability !== ServiceAvailability.UNAVAILABLE ? (
+        <>
+          <div className="flex justify-center py-5 px-4 lg:px-20 ">
+            <div className="bg-yellow-400/10 rounded-lg py-3 flex justify-center flex-col gap-2 items-center w-full">
+              <Rate value={rating} disabled></Rate>
+              {/* <p className="text-gray-500">
             <span className="font-bold">{reviews?.length}</span> customers
             rating{" "}
           </p> */}
-        </div>
-      </div>
-      <div className="flex justify-center px-2 mt-0 pb-5">
-        {isSuccess ? (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-            className="bg-teal-600 text-white px-10 py-2  rounded-3xl font-semibold"
-          >
-            Added to Cart
-          </button>
-        ) : (
-          <button
-            disabled={isLoading}
-            onClick={(e) => {
-              e.stopPropagation();
-              handleAddToCart();
-            }}
-            className="bg-yellow-400  px-10 py-2  rounded-3xl font-semibold"
-          >
-            Add to Cart
-          </button>
-        )}
-      </div>
+            </div>
+          </div>
+          <div className="flex justify-center px-2 mt-0 pb-5">
+            {isSuccess ? (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+                className="bg-teal-600 text-white px-10 py-2  rounded-3xl font-semibold"
+              >
+                Added to Cart
+              </button>
+            ) : (
+              <button
+                disabled={isLoading}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleAddToCart();
+                }}
+                className="bg-yellow-400  px-10 py-2  rounded-3xl font-semibold"
+              >
+                Add to Cart
+              </button>
+            )}
+          </div>
+        </>
+      ) : (
+        <div className="pt-5"></div>
+      )}
     </div>
   );
 };

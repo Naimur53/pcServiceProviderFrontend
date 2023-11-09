@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="fixed w-full top-0 z-[50]">
+    <header className="fixed w-full top-0 z-[500]">
       <div className="px-4 py-2 text-whdite flex  justify-between text-black bg-white/50 backdrop-blur-xl">
         <Logo></Logo>
         <div

@@ -22,7 +22,7 @@ const UpcommingServices = (props: Props) => {
   } else if (data?.data.length) {
     content = (
       <div>
-        <div className="grid grid-cols-1   xl:grid-cols-2 2xl:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1   xl:grid-cols-2 2xl:grid-cols-3 gap-5 px-20">
           {data.data.map((single: PcService) => (
             <ServiceCard key={single.id} {...single} />
           ))}
@@ -31,8 +31,8 @@ const UpcommingServices = (props: Props) => {
     );
   }
   return (
-    <div className="relative w-full h-full">
-      <div className="container py-40 relative z-50">
+    <section className="relative w-full h-full">
+      <div className="container pb-40 pt-20 relative z-50">
         <h2 className="text-center font-bold text-4xl">
           Our Upcoming Services
         </h2>
@@ -43,7 +43,7 @@ const UpcommingServices = (props: Props) => {
         <div>{content}</div>
       </div>
       <UpcommingServicesBackground></UpcommingServicesBackground>
-    </div>
+    </section>
   );
 };
 
