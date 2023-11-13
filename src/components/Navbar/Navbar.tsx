@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { userLoggedOut } from "@/redux/features/auth/authSlice";
 import { Avatar } from "antd";
+import useScrollValues from "@/hooks/useScrollValues";
 const Navbar = () => {
+  const { progress } = useScrollValues();
   const [toggleMenu, setToggleMenu] = useState(false);
   const user = useAppSelector((state) => state.user.user);
   const dispatch = useAppDispatch();
@@ -14,7 +16,16 @@ const Navbar = () => {
 
   return (
     <header className="fixed w-full top-0 z-[500]">
-      <div className="px-4 py-2 text-whdite flex  justify-between text-black bg-white/50 backdrop-blur-xl">
+      <div
+        className={`
+      px-4 py-2 text-whdite flex  justify-between text-black transition-all 
+      ${
+        progress >= 0.06
+          ? "bg-white/50 backdrop-blur-xl"
+          : "bg-transparent backdrop-blur-0"
+      }
+      `}
+      >
         <Logo></Logo>
         <div
           className={
@@ -70,7 +81,7 @@ const Navbar = () => {
           >
             <span
               onClick={handleToggle}
-              className="navicon bg-white-darkest flex items-center relative"
+              className="navicon bg-black flex items-center relative"
             ></span>
           </label>
         </div>

@@ -7,7 +7,6 @@ const HowItsWorkBackground = (props: Props) => {
   const { progress } = useScrollValues();
   let smoothedScrollY = progress * 1000;
   smoothedScrollY -= 390;
-  console.log(smoothedScrollY);
   smoothedScrollY *= 1.2;
   return (
     <>

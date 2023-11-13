@@ -15,7 +15,7 @@ const Banner = (props: Props) => {
         <div className="grid lg:grid-cols-2 grid-cols-1 gap-[150px] ">
           <div className="flex  items-center">
             <div>
-              <h1 className="text-2xl lg:text-6xl font-black mb-2">
+              <h1 className="text-2xl mt-20 lg:mt-0 lg:text-6xl font-black mb-2">
                 Computer Repair And Troubleshoot Your Pc Problem
               </h1>
               <p className=" text-sm mt-5">

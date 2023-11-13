@@ -6,8 +6,8 @@ type Props = {};
 const Footer = (props: Props) => {
   return (
     <div>
-      <footer className="relative bg-main-primary/30 pt-8 pb-6 mt-20">
-        <div className="container mx-auto px-4">
+      <footer className="relative how-it-work-wrap text-white pt-8 pb-6 mt-20">
+        <div className="container mx-auto px-4 relative">
           <div className="flex flex-wrap text-left lg:text-left">
             <div className="w-full lg:w-6/12 px-4">
               <h4 className="text-3xl fonat-semibold text-blueGray-700">

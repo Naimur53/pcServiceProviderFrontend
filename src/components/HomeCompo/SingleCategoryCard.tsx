@@ -35,7 +35,7 @@ const SingleCategoryCard = ({
           <Image
             width={200}
             height={200}
-            className="rounded-l-lg min-w-[180px] w-[180px] transition-all  h-full"
+            className="rounded-l-lg min-w-[100px] w-[100px] lg:min-w-[180px] lg:w-[180px] transition-all  h-full"
             src={thumbnail}
             alt=""
           />

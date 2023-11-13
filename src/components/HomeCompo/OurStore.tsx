@@ -5,7 +5,7 @@ type Props = {};
 const OurStore = (props: Props) => {
   return (
     <div className="container">
-      <div className=" py-12">
+      <div className=" lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -17,7 +17,7 @@ const OurStore = (props: Props) => {
           </div>
           <div className="mt-10">
             <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
-              <div className="flex shadow border p-4">
+              <div className="flex shadow border rounded-lg p-4">
                 <div className="flex-shrink-0">
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
                     {/* Heroicon name: globe-alt */}
@@ -48,7 +48,7 @@ const OurStore = (props: Props) => {
                   </dd>
                 </div>
               </div>
-              <div className="flex shadow border p-4">
+              <div className="flex shadow border rounded-lg p-4">
                 <div className="flex-shrink-0">
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
                     {/* Heroicon name: phone */}
@@ -77,7 +77,7 @@ const OurStore = (props: Props) => {
                   </dd>
                 </div>
               </div>
-              <div className="flex shadow border p-4">
+              <div className="flex shadow border rounded-lg p-4">
                 <div className="flex-shrink-0">
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
                     {/* Heroicon name: mail */}
@@ -106,7 +106,7 @@ const OurStore = (props: Props) => {
                   </dd>
                 </div>
               </div>
-              <div className="flex shadow border p-4">
+              <div className="flex shadow border rounded-lg p-4">
                 <div className="flex-shrink-0">
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
                     {/* Heroicon name: clock */}

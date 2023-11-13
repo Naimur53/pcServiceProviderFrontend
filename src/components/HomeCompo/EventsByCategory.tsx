@@ -9,41 +9,11 @@ import EventsByCategoryBackground from "./EventsByCategoryBackground";
 import { motion } from "framer-motion";
 import { smoothShowAnimation } from "@/utils/animation";
 
-type Props = {};
+type Props = {
+  services: IAllCategoryOfPcService[];
+};
 
-const EventsByCategory = (props: Props) => {
-  const { data, error, isError, isLoading, isFetching, isSuccess } =
-    useGetAllCategoryOfPcServiceQuery("");
-  console.log(data);
-  let content = null;
-
-  if (isFetching || isLoading) {
-    content = <Loading></Loading>;
-  } else if (isError) {
-    content = <ErrorCompo></ErrorCompo>;
-  } else if (data?.data?.length) {
-    const all = data.data as IAllCategoryOfPcService[];
-
-    content = (
-      <motion.div
-        variants={smoothShowAnimation.container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: false }}
-        transition={{ type: "just" }}
-        className="grid grid-cols-1 xl:grid-cols-3 mt-20 gap-x-5 gap-y-10"
-      >
-        {all?.map((single) => (
-          <SingleCategoryCard
-            key={single.category}
-            {...single}
-          ></SingleCategoryCard>
-        ))}
-      </motion.div>
-    );
-  } else {
-    content = <Loading></Loading>;
-  }
+const EventsByCategory = ({ services }: Props) => {
   return (
     <div className="relative">
       <div className="container py-40 relative z-30">
@@ -53,7 +23,21 @@ const EventsByCategory = (props: Props) => {
             We have more than 10+ service category here are popular categories
           </p>
         </div>
-        <>{content}</>
+        <motion.div
+          variants={smoothShowAnimation.container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false }}
+          transition={{ type: "just" }}
+          className="grid grid-cols-1 xl:grid-cols-3 mt-20 gap-x-5 gap-y-10"
+        >
+          {services?.map((single) => (
+            <SingleCategoryCard
+              key={single.category}
+              {...single}
+            ></SingleCategoryCard>
+          ))}
+        </motion.div>
       </div>
       <EventsByCategoryBackground></EventsByCategoryBackground>
     </div>

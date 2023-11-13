@@ -7,30 +7,11 @@ import ServiceCard from "../ServiceCard/ServiceCard";
 import Link from "next/link";
 import HomeServiceBackground from "./HomeServiceBackground";
 
-type Props = {};
+type Props = {
+  services: PcService[];
+};
 
-const HomeService = (props: Props) => {
-  const { data, isLoading, isSuccess, isFetching, isError } =
-    useGetPcServiceQuery(
-      `limit=6&availability=${ServiceAvailability.TWENTY_FOUR_SEVEN}`
-    );
-  let content = null;
-
-  if (isFetching || isLoading) {
-    content = <Loading></Loading>;
-  } else if (isError) {
-    content = <ErrorCompo></ErrorCompo>;
-  } else if (data?.data.length) {
-    content = (
-      <div>
-        <div className="grid grid-cols-1   xl:grid-cols-2 2xl:grid-cols-3 gap-10">
-          {data.data.map((single: PcService) => (
-            <ServiceCard key={single.id} {...single} />
-          ))}
-        </div>
-      </div>
-    );
-  }
+const HomeService = ({ services }: Props) => {
   return (
     <div className="relative py-20 bg-yellow-300">
       <div className="container  relative z-30">
@@ -42,7 +23,15 @@ const HomeService = (props: Props) => {
           free to checkout more services
         </p>
 
-        <div className="md:px-20">{content}</div>
+        <div className="md:px-20">
+          <div>
+            <div className="grid grid-cols-1   xl:grid-cols-2 2xl:grid-cols-3 gap-10">
+              {services.map((single: PcService) => (
+                <ServiceCard key={single.id} {...single} />
+              ))}
+            </div>
+          </div>
+        </div>
         <div className="flex justify-center mt-10">
           <Link
             className="inline-block px-10 py-2  rounded-3xl border border-yellow-600  font-semibold mt-3"

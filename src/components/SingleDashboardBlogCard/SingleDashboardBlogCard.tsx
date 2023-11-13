@@ -42,16 +42,15 @@ const SingleDashboardBlogCard = ({
       });
   };
   return (
-    <div className="shadow rounded-xl">
-      <img src={thumbnails} className="w-full rounded-xl" alt="" />
+    <div className="">
+      <img src={thumbnails} className="w-full mb-1 rounded-xl" alt="" />
+      <Link
+        href={`/blog/${id}`}
+        className="text-2xl blog-title mt-2   font-bold uppercase "
+      >
+        {title}
+      </Link>
       <div className="px-3 py-4 ">
-        <Link
-          href={`/blog/${id}`}
-          className="text-2xl hover:text-main-primary transition-all font-bold capitalize underline"
-        >
-          {title}
-        </Link>
-
         {forAdmin ? (
           <div className="flex gap-4 mt-5">
             <button
