@@ -50,7 +50,6 @@ export interface IAllCategoryOfPcService {
   };
   category: string;
 }
-
 export enum UserRole {
   Customer = "customer",
   Admin = "admin",
@@ -176,4 +175,25 @@ export interface INavItems {
   matchUrl: string;
   name: string;
   icon: IconDefinition;
+}
+
+export interface IOverviewCategoryStatus {
+  pcServiceId: string;
+  name: string;
+  count: number;
+}
+export interface IOverviewBookingStatus {
+  _count: number;
+  status: BookingStatus;
+}
+export interface IAdminOverViewStatus {
+  bookingStatus: IOverviewBookingStatus[];
+  categoryStatus: IOverviewCategoryStatus[];
+  totalUser: number;
+  totalFeedback: number;
+  totalReviews: number;
+  totalCarts: number;
+  totalBlog: number;
+  totalFaq: number;
+  totalService: number;
 }

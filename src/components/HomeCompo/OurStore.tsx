@@ -1,10 +1,11 @@
 import React from "react";
-
+import { motion } from "framer-motion";
+import { smoothShowAnimation } from "@/utils/animation";
 type Props = {};
 
 const OurStore = (props: Props) => {
   return (
-    <div className="container">
+    <section className="container">
       <div className=" lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
@@ -16,10 +17,20 @@ const OurStore = (props: Props) => {
             </p>
           </div>
           <div className="mt-10">
-            <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
-              <div className="flex shadow border rounded-lg p-4">
+            <motion.div
+              variants={smoothShowAnimation.container}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false }}
+              transition={{ type: "just" }}
+              className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10"
+            >
+              <motion.div
+                variants={smoothShowAnimation.item}
+                className="flex shadow border rounded-lg p-4"
+              >
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-md bg-main-primary text-white">
                     {/* Heroicon name: globe-alt */}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -47,10 +58,13 @@ const OurStore = (props: Props) => {
                     Anytown, USA 12345
                   </dd>
                 </div>
-              </div>
-              <div className="flex shadow border rounded-lg p-4">
+              </motion.div>
+              <motion.div
+                variants={smoothShowAnimation.item}
+                className="flex shadow border rounded-lg p-4"
+              >
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-md bg-main-primary text-white">
                     {/* Heroicon name: phone */}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -76,10 +90,13 @@ const OurStore = (props: Props) => {
                     (555) 555-5555
                   </dd>
                 </div>
-              </div>
-              <div className="flex shadow border rounded-lg p-4">
+              </motion.div>
+              <motion.div
+                variants={smoothShowAnimation.item}
+                className="flex shadow border rounded-lg p-4"
+              >
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-md bg-main-primary text-white">
                     {/* Heroicon name: mail */}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -105,10 +122,13 @@ const OurStore = (props: Props) => {
                     info@ourstore.com
                   </dd>
                 </div>
-              </div>
-              <div className="flex shadow border rounded-lg p-4">
+              </motion.div>
+              <motion.div
+                variants={smoothShowAnimation.item}
+                className="flex shadow border rounded-lg p-4"
+              >
                 <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-md bg-main-primary text-white">
                     {/* Heroicon name: clock */}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -138,12 +158,12 @@ const OurStore = (props: Props) => {
                     Sunday: 12pm to 4pm
                   </dd>
                 </div>
-              </div>
-            </dl>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

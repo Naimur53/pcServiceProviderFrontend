@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { userLoggedOut } from "@/redux/features/auth/authSlice";
 import { Avatar } from "antd";
 import useScrollValues from "@/hooks/useScrollValues";
+import { useRouter } from "next/router";
 const Navbar = () => {
   const { progress } = useScrollValues();
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -13,14 +14,17 @@ const Navbar = () => {
   const handleToggle = () => {
     setToggleMenu(!toggleMenu);
   };
-
+  const router = useRouter();
+  const isHome = router.pathname === "/";
   return (
     <header className="fixed w-full top-0 z-[500]">
       <div
         className={`
       px-4 py-2 text-whdite flex  justify-between text-black transition-all 
       ${
-        progress >= 0.06
+        !isHome
+          ? "bg-white/50 backdrop-blur-xl"
+          : progress >= 0.06
           ? "bg-white/50 backdrop-blur-xl"
           : "bg-transparent backdrop-blur-0"
       }

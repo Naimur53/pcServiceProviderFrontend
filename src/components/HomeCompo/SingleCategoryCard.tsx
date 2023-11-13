@@ -41,7 +41,7 @@ const SingleCategoryCard = ({
           />
         </div>
         <div>
-          <h1 className="mt-1 text-xl group-hover:text-purple-600 transition-all font-bold mb-1 capitalize">
+          <h1 className="mt-1 text-xl group-hover:text-main-primary transition-all font-bold mb-1 capitalize">
             {category.split("_").join(" ").toLowerCase()}
           </h1>
 
