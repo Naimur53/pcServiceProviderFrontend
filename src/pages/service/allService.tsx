@@ -14,7 +14,7 @@ const AllService = (props: Props) => {
         </h2>
         <Link
           href={"#all-service"}
-          className="text-lg font-bold text-white bg-main-primary px-4 py-2 mt-5"
+          className=" font-bold rounded bg-main-primary px-4 py-2 mt-5"
         >
           Find Service
         </Link>

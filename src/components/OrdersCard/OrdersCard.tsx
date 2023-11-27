@@ -12,6 +12,7 @@ import Form from "../Forms/Form";
 import FormInput from "../Forms/FormInput";
 import FormSelectDate from "../Forms/FormSelectDate";
 import AddReviewModal from "../AddReviewModal/AddReviewModal";
+import Image from "next/image";
 
 type Props = {} & Booking;
 
@@ -62,7 +63,13 @@ const OrdersCard = ({
   return (
     <div className="shadow">
       {pcService?.thumbnail ? (
-        <img src={pcService?.thumbnail} alt="product" />
+        <Image
+          height={300}
+          width={300}
+          src={pcService?.thumbnail}
+          className="w-full"
+          alt="product"
+        />
       ) : null}
       <div className="p-3">
         <h2 className=" text-xl font-bold">{pcService?.name}</h2>

@@ -26,7 +26,7 @@ const Navbar = () => {
           ? "bg-white/50 backdrop-blur-xl"
           : progress >= 0.06
           ? "bg-white/50 backdrop-blur-xl"
-          : "bg-transparent backdrop-blur-0"
+          : "bg-white/50 backdrop-blur-xl lg:bg-transparent lg:backdrop-blur-0"
       }
       `}
       >

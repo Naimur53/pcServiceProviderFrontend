@@ -67,7 +67,7 @@ const ServiceDetailsCard = ({
           </div>
         </div>
         <div className=" container ">
-          <div className="grid grid-cols-1 lg:grid-cols-3 ">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 ">
             <div className="col-span-2 order-2 md:order-1">
               <div className="mt-5">
                 <h4 className="text-3xl font-bold">Description</h4>
